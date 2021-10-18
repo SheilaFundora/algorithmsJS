@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>js</title>
+  <link rel="stylesheet" type="text/css" href="index-css.css">
+
+</head>
+<body>
+
+  <div>
+    <div class="modal-box">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m1-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m1-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m1-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m1-2"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <pre>
+          import math
+
+class Par:
+
+    def __init__( self, apertura, cierre ):
+        self.apertura = apertura
+        self.cierre = cierre
+
+class SegmentTree:
+
+    def __init__(self, string ):
+        self.size = int ( 2 * math.pow(2, ( math.log2(len(string) )+ 1) ) )
+        self.string = string
+        self.st = [ Par( 0, 0 ) for i in range( self.size ) ]
+
+        self.build( 0, 0, len(string)-1)
+
+    def build(self, nodo, inicio, fin ):
+        if inicio == fin:
+            apertura = 0; cierre = 0
+            if self.string[inicio] == "(":
+                apertura = 1
+            else:
+                cierre = 1
+
+
+            self.st[nodo].apertura = apertura
+            self.st[nodo].cierre = cierre
+
+        if inicio < fin:
+            medio = ( inicio + fin ) // 2
+            self.build( 2 * nodo + 1, inicio, medio )
+            self.build( 2 * nodo + 2, medio + 1, fin )
+
+            self.st[nodo].apertura = self.st[2 * nodo + 1].apertura\
+                                     - min( self.st[2*nodo+1].apertura,self.st[2*nodo+2].cierre ) +\
+                                     self.st[2 * nodo + 2].apertura
+            self.st[nodo].cierre = self.st[2 * nodo + 2].cierre\
+                                     - min( self.st[2*nodo+1].apertura,self.st[2*nodo+2].cierre ) +\
+                                     self.st[2 * nodo + 1].cierre
+
+
+if __name__ == '__main__':
+
+    size_str = int( input() )
+    string = input()
+    amount_queries = int( input() )
+
+    segment = SegmentTree(string)
+
+    while amount_queries > 0:
+        data = input().split()
+        type_query = data[0]
+        range_first = data[1]
+        range_end = data[2]
+
+        if type_query == "q":
+            pass
+        #devuelve 1 si esta balanceada y 0 si no
+        else:
+            pass
+        #es el update de actualizar parentisis
+
+
+        amount_queries -= 1
+        </pre>
+        <button onclick="closeModal('m1-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m1-3"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m1-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m2-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m2-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m2-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m2-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m2-2"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m2-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m2-3"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m2-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m3-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m3-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m3-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m3-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m3-2">
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m3-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m3-3">
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m3-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m4-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m4-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m4-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m4-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m4-2"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m4-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m4-3"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m4-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m5-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m5-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m5-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m5-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m5-2"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m5-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m5-3"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m5-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m6-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m6-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m6-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m6-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m6-2"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m6-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m6-3"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m6-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m7-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m7-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m7-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m7-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m7-2"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m7-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m7-3"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m7-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m8-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m8-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m8-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m8-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m8-2"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m8-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m8-3"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m8-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m9-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m9-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m9-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m9-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m9-2"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m9-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m9-3"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m9-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m10-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m10-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m10-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m10-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m10-2"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m10-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m10-3"  >
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m10-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m11-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m11-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m11-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m11-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m11-2">
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m11-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m11-3">
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m11-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m12-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m12-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m12-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m12-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m12-2">
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m12-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m12-3">
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m12-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m13-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m13-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m13-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m13-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m13-2">
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m13-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m13-3">
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m13-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m14-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m14-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m14-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m14-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m14-2">
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m14-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m14-3">
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m14-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m15-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m15-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m15-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m15-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m15-2">
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m15-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m15-3">
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m15-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m16-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m16-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m16-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m16-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m16-2">
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m16-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m16-3">
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m16-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m17-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m17-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m17-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m17-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m17-2">
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m17-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m17-3">
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m17-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m18-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m18-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m18-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m18-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m18-2">
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m18-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m18-3">
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m18-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m19-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m19-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m19-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m19-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m19-2">
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m19-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m19-3">
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m19-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal-box" id="m20-1">
+      <div class="window">
+        <div style="text-align: center; padding-top: 20px; color: #2c594a">
+          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
+          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
+            <button onclick="showModal('m20-2')" class="btn-window">Show code</button>
+            <button onclick="showModal('m20-3')" class="btn-window">Test code</button>
+            <button onclick="closeModal('m20-1')" class="btn-window c-diff">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m20-2">
+      <div class="window-code">
+        <h1>Este es el boton 1 show code</h1>
+        <button onclick="closeModal('m20-2')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal-box" id="m20-3">
+      <div class="window-code">
+        <h1>Este es el boton 1 test</h1>
+        <button onclick="closeModal('m20-3')" class="btn-window c-diff">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+
+  <h1 id="tittle">Algorithms in javaascript</h1>
+
+  <main>
+    <ul>
+      <li><button onclick="showModal('m1-1')" class="btn-form  c-one">Heap sort</button></li>
+      <li><button onclick="showModal('m2-1')" class="btn-form c-two">Merge sort</button></li>
+      <li><button onclick="showModal('m3-1')" class="btn-form c-three">Binary search</button></li>
+      <li><button onclick="showModal('m4-1')" class="btn-form c-four">PQ</button></li>
+      <li><button onclick="showModal('m5-1')" class="btn-form c-five">Class grafo</button></li>
+      <li><button onclick="showModal('m6-1')" class="btn-form c-six">BFS</button></li>
+      <li><button onclick="showModal('m7-1')" class="btn-form c-seven">DFS</button></li>
+      <li><button onclick="showModal('m8-1')" class="btn-form c-eigth">Kruskal</button></li>
+      <li><button onclick="showModal('m9-1')" class="btn-form c-ten">Djkstra</button></li>
+      <li><button onclick="showModal('m10-1')" class="btn-form c-eleven">Prim</button></li>
+      <li><button onclick="showModal('m11-1')" class="btn-form c-twelve">Floyd</button></li>
+      <li><button onclick="showModal('m12-1')" class="btn-form c-thirteen">Bipartide</button></li>
+      <li><button onclick="showModal('m13-1')" class="btn-form c-fourteen">Is loop</button></li>
+      <li><button onclick="showModal('m14-1')" class="btn-form c-fifteen">RegularGraph</button></li>
+      <li><button onclick="showModal('m15-1')" class="btn-form c-sixteen">C conneted</button></li>
+      <li><button onclick="showModal('m16-1')" class="btn-form c-seventeen">Segment tree</button></li>
+      <li><button onclick="showModal('m17-1')" class="btn-form c-eigthteen">lazy propag...</button></li>
+      <li><button onclick="showModal('m18-1')" class="btn-form c-nineteen">La criba</button></li>
+      <li><button onclick="showModal('m19-1')" class="btn-form c-twenty">Prime factors</button></li>
+      <li><button onclick="showModal('m20-1')" class="btn-form c-twenty-two">+ of divisors</button></li>
+    </ul>
+  </main>
+
+
+
+  <script type="text/javascript" src="doc.js"></script>
+</body>
+</html>
