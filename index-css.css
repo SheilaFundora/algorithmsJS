@@ -9,14 +9,25 @@ body{
     margin: 0;
     box-sizing: border-box;
 }
+:root{
+    --dark-green: #478d75;
+    --ligth-green: #64c7a5;
+}
 
 main{
     padding: 30px 0 20px 0;
     position: relative;
 }
 
+#contened-buttom{
+    padding: 0 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 main ul{
-    column-count: 5;
+    padding: 0;
     margin: 0 30px;
 }
 
@@ -55,7 +66,7 @@ main li{
 button.c-one{
     background-color: deeppink;
 } button.c-two{
-    background-color: #64c7a5;
+    background-color: var(--ligth-green);
 }button.c-three{
     background-color: greenyellow;
 }button.c-four{
@@ -99,6 +110,23 @@ button.c-one{
  button.c-twenty-two{
      background-color: crimson;
 }
+/*propiedades para la barra de scroll*/
+::-webkit-scrollbar {
+    width: 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2c594a;
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
 
 .modal-box{
     z-index: 2;
@@ -106,9 +134,9 @@ button.c-one{
     height: 100%;
     position: fixed;
     top: 0;
+    background-color: rgba(0, 0, 0, 0.84);
     padding-top: 50px;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.84);
     display: none;
     animation-duration: 0.2s;
     animation-name: model;
@@ -120,13 +148,18 @@ button.c-one{
     from {display: none}
     to {display: block}
 }
+
 .window-code{
     background-color: white;
     border-radius: 8px;
-    width: 90%;
+    width: 88%;
     height: 85%;
     overflow-y: scroll;
     margin: auto auto;
+}
+
+.window-code pre{
+    font-size: 15.5px;
 }
 .window{
     background-color: white;
@@ -135,6 +168,20 @@ button.c-one{
     height: 300px;
     margin: auto auto;
     margin-top: 140px;
+}
+
+h1.tittle-window-choose{
+    font-family: Arial;
+    font-size: 35px;
+    color: #2c594a;
+    text-align: center;
+    padding-top: 40px;
+}
+div.contened-btn-menu-choose{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+    flex-wrap: wrap;
 }
 
 .btn-window{
@@ -146,18 +193,177 @@ button.c-one{
     font-size: 25px;
     outline: none;
     letter-spacing: 0.5px;
-    background-color: #64c7a5;
+    background-color: var(--ligth-green);
     width: 170px;
     font-family: Arial;
+    transition-property: background-color;
+    transition-delay: 0s;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
 }
 .btn-window:hover{
     background-color: #478d75;!important;
     cursor: pointer;
+    transition-property: background-color;
+    transition-delay: 0s;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
 }
 
 .c-diff{
-    background-color: #468c74;
+    background-color: var(--dark-green);
+    transition-property: background-color;
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
 }
 .c-diff:hover{
-    background-color: #64c7a5;
+    background-color: var(--ligth-green);
+    transition-property: background-color;
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.float-back{
+    position: fixed;
+    top: 75%;
+    left: 75%;
+    border-radius: 70px;
+}
+.tittle-code{
+    text-align: center!important;
+    font-family: Arial;
+    font-size: 38px;
+    color: #2c594a;
+    white-space: pre-wrap;
+    background-color: white;
+    padding-top: 15px;
+}
+
+.btn-show-list{
+    padding: 15px 0;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    font-size: 23px;
+    outline: none;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    background-color: var(--dark-green);
+    width: 25%;
+    margin-top: 20px;
+    font-family: Arial;
+    margin-left: 80px;
+    transition-property: background-color;
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+
+}
+
+.btn-show-list:hover{
+    background-color: var(--ligth-green);
+    transition: background-color;
+    transition-duration: 0.2s;
+    transition-delay: 0s;
+    transition-timing-function: linear;
+}
+
+input.list-number{
+    padding: 20px;
+    font-size: 18px;
+    outline: none;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid black;
+    width: 90%;
+    margin-bottom: 0;
+}
+
+p.smsError{
+    color: #910504;
+    font-size: 18px;
+    visibility: hidden;
+}
+
+p#smsErrorAdd{
+    color: #910504;
+    font-size: 18px;
+    visibility: hidden;
+}p#smsErrorBinary{
+    color: #910504;
+    font-size: 18px;
+    visibility: hidden;
+}
+
+p.showList{
+    margin-top: 70px;
+    margin-left: 130px;
+    font-size: 24px;
+    visibility: hidden;
+}
+p#extraerPQ{
+    margin-left: 15px;
+    font-size: 24px;
+    visibility: hidden;
+}
+
+p#smsErrorRemove{
+    margin-left: 130px;
+    font-size: 24px;
+    visibility: hidden;
+}
+
+input.list-number-to-find{
+    padding: 20px;
+    font-size: 18px;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid black;
+    width: 60%;
+    display: inline;
+    margin-right: 20px;
+}
+
+input.list-add{
+    padding: 15px 15px;
+    font-size: 18px;
+    outline: none;
+    margin-top: 6px;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 60%;
+    margin-bottom: 0;
+
+}
+
+button.btnAdd{
+    position: absolute;
+    right: 12.4%;
+    width: 3%;
+    padding: 12px 0;
+    top: 45.4%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px ;
+}
+
+button.closeX{
+    background-color: #910504;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 3px;
+    border: none;
+    font-size: 16px;
+    margin: 0;
+    position: fixed;
+    right: 6%;
+    transition-property: background-color;
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+button.closeX:hover{
+    background-color: rgba(145, 5, 4, 0.68);
 }

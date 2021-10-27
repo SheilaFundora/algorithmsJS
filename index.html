@@ -4,102 +4,128 @@
   <meta charset="UTF-8">
   <title>js</title>
   <link rel="stylesheet" type="text/css" href="index-css.css">
+  <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0">
 
 </head>
 <body>
 
   <div>
-    <div class="modal-box">
+    <div class="modal-box "  id="m1-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m1-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m1-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m1-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m1-1'); showModal('m1-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m1-1'); showModal('m1-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m1-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
-    <div class="modal-box" id="m1-2"  >
+    <div class="modal-box" id="m1-2" >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
+        <h1 class="tittle-code">Priority Queue data structure</h1>
         <pre>
-          import math
+          class Priorityqueue{
 
-class Par:
+              constructor(arr) {
+                  this.arr = arr;
+                  this.size = arr.length;
+                  this.build()
+              }
 
-    def __init__( self, apertura, cierre ):
-        self.apertura = apertura
-        self.cierre = cierre
+              build() {
+                  for( var i = parseInt( (this.size / 2) -  1 ); i >= 0; i --){
+                      this.heapify(i);
+                  }
+              }
 
-class SegmentTree:
+              heapify(i){
+                  if( ( ( i * 2 ) + 1 ) < this.size){
+                      if( this.arr[2 * i + 1] < this.arr[i]){
+                          this.swap(2 * i + 1, i);
+                          this.heapify(2 * i + 1);
+                      }
 
-    def __init__(self, string ):
-        self.size = int ( 2 * math.pow(2, ( math.log2(len(string) )+ 1) ) )
-        self.string = string
-        self.st = [ Par( 0, 0 ) for i in range( self.size ) ]
+                  }
+                  if( ( ( i * 2 ) + 2) < this.size){
+                      if( this.arr[2 * i + 2] < this.arr[i]){
+                          this.swap(2 * i + 2, i);
+                          this.heapify(2 * i + 2);
+                      }
+                  }
+              }
 
-        self.build( 0, 0, len(string)-1)
+              heapifyInvertido(i){
+                  if( i % 2 !== 0 && i !== 0){
+                      if( this.arr[i] < parseInt( this.arr[( i -1 ) / 2] ) ){
+                          this.swap(i, ( (i - 1 ) / 2) );
+                          this.heapifyInvertido( ( i -1 )/ 2 );
+                      }
 
-    def build(self, nodo, inicio, fin ):
-        if inicio == fin:
-            apertura = 0; cierre = 0
-            if self.string[inicio] == "(":
-                apertura = 1
-            else:
-                cierre = 1
+                  }
+                  if(  i % 2 === 0 && i !== 0){
+                      if( this.arr[i] < parseInt( this.arr[( i - 2 ) / 2] ) ){
+                          this.swap(i, ( i - 2) / 2 );
+                          this.heapifyInvertido( ( i - 2) / 2 );
+                      }
+                  }
+              }
 
+              swap(i, j){
+                  var aux = this.arr[i];
+                  this.arr[i] = this.arr[j];
+                  this.arr[j] = aux;
+              }
 
-            self.st[nodo].apertura = apertura
-            self.st[nodo].cierre = cierre
+              extraer(){
+                if(this.size > 0){
+                    var aux = this.arr[0];
+                    this.swap(0, this.size - 1);
+                    this.arr.pop(this.arr[this.size - 1], 1);
+                    this.size -= 1;
+                    this.heapify(0);
+                    return aux;
+                }
+              }
 
-        if inicio < fin:
-            medio = ( inicio + fin ) // 2
-            self.build( 2 * nodo + 1, inicio, medio )
-            self.build( 2 * nodo + 2, medio + 1, fin )
-
-            self.st[nodo].apertura = self.st[2 * nodo + 1].apertura\
-                                     - min( self.st[2*nodo+1].apertura,self.st[2*nodo+2].cierre ) +\
-                                     self.st[2 * nodo + 2].apertura
-            self.st[nodo].cierre = self.st[2 * nodo + 2].cierre\
-                                     - min( self.st[2*nodo+1].apertura,self.st[2*nodo+2].cierre ) +\
-                                     self.st[2 * nodo + 1].cierre
-
-
-if __name__ == '__main__':
-
-    size_str = int( input() )
-    string = input()
-    amount_queries = int( input() )
-
-    segment = SegmentTree(string)
-
-    while amount_queries > 0:
-        data = input().split()
-        type_query = data[0]
-        range_first = data[1]
-        range_end = data[2]
-
-        if type_query == "q":
-            pass
-        #devuelve 1 si esta balanceada y 0 si no
-        else:
-            pass
-        #es el update de actualizar parentisis
-
-
-        amount_queries -= 1
+              add( elemento ){
+                  this.arr.push(elemento);
+                  this.size += 1;
+                  this.heapifyInvertido(this.size - 1);
+              }
+          }
         </pre>
-        <button onclick="closeModal('m1-2')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m1-2'); showModal('m1-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m1-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m1-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m1-3'); showModal('m1-1'); closeAll()" class="closeX">X</button>
+        <h1 class="tittle-code">Priority Queue data estructure</h1>
+        <form>
+          <div style="margin-left: 80px; margin-top: 50px">
+            <label for="list-numbers-pq" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+            <input id="list-numbers-pq" placeholder="numbers" type="text" class="list-number" required>
+            <p class="smsError">Aqui va un sms de error</p>
+            <div style="float: right; margin-top: -25px">
+              <label for="element-to-add" style="font-size: 22px">Add</label><br>
+              <input id="element-to-add" placeholder="element" type="text" class="list-add">
+              <p id="smsErrorAdd"> Aqui va un sms de error</p>
+            </div>
+          </div>
+        </form>
+        <button onclick="addElement()" class="btn-show-list btnAdd">+</button>
+        <div style="margin-top: -15px">
+          <button onclick="showPq()" class="btn-show-list" style="width: 100px">Show</button>
+          <p class="showList" style="display: inline; margin-left: 15px!important;">Aqui va la lista</p>
+        </div>
+        <div style="margin-top: 40px">
+          <button onclick="getOut()" class="btn-show-list" style="width: 120px">Get Out</button>
+          <p id="extraerPQ" style="display: inline">Aqui va un valor</p>
+          <p id="smsErrorRemove">Aqui va un errorr</p>
+        </div>
+        <button onclick="closeAll()" class ="btn-window c-diff float-back" style="margin-top: -32px">Clean all</button>
       </div>
     </div>
   </div>
@@ -107,28 +133,79 @@ if __name__ == '__main__':
   <div>
     <div class="modal-box" id="m2-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m2-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m2-3')" class="btn-window">Test code</button>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+            <button onclick="closeModal('m2-1');showModal('m2-2')" class="btn-window">Show code</button>
+            <button onclick="closeModal('m2-1');showModal('m2-3')" class="btn-window">Test code</button>
             <button onclick="closeModal('m2-1')" class="btn-window c-diff">Cancel</button>
           </div>
-        </div>
       </div>
     </div>
 
     <div class="modal-box" id="m2-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m2-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Heap Sort sorting algorithms</h1>
+        <pre>
+          function heapSort(arr) {
+              var size = arr.length;
+              build(size, arr);
+
+              while(size > 1){
+                  swap(0, size - 1,arr );
+                  heapify(0, size-1, arr);
+                  size -= 1;
+              }
+              return arr.reverse();
+          }
+
+          function  build(size, arr){
+              for( var i = parseInt( (size / 2) -  1 ); i >= 0; i --){
+                  this.heapify(i, size, arr);
+              }
+          }
+
+          function  heapify(i, size, arr){
+              if( ( ( i * 2 ) + 1 ) < size){
+                  if( arr[2 * i + 1] < arr[i]){
+                      this.swap(2 * i + 1, i, arr);
+                      this.heapify(2 * i + 1, size, arr);
+                  }
+              }
+
+              if( ( ( i * 2 ) + 2) < size){
+                  if( arr[2 * i + 2] < arr[i]){
+                      swap(2 * i + 2, i, arr);
+                      heapify(2 * i + 2, size, arr);
+                  }
+              }
+          }
+
+          function  swap(i, j, arr){
+              var aux = arr[i];
+              arr[i] = arr[j];
+              arr[j] = aux;
+          }
+        </pre>
+        <button onclick="closeModal('m2-2'); showModal('m2-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m2-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m2-3')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Heap Sort sorting algorithms</h1>
+        <form>
+          <div style="margin-left: 80px; margin-top: 60px">
+            <label for="list-numbers-heap" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+            <input id="list-numbers-heap" placeholder="numbers" type="text" class="list-number" required>
+            <p class="smsError">Aqui va un sms de error</p>
+          </div>
+        </form>
+        <button onclick="showHeapSort()" class="btn-show-list">Show ordering list</button>
+        <p class="showList">Aqui va la lista</p>
+        <div>
+          <button onclick="closeAll()" class="btn-window c-diff float-back" style="left: 60%">Clean all</button>
+          <button onclick="closeModal('m2-3'); showModal('m2-1'); closeAll()" class="btn-window c-diff float-back">Get back</button>
+        </div>
       </div>
     </div>
   </div>
@@ -136,28 +213,86 @@ if __name__ == '__main__':
   <div>
     <div class="modal-box" id="m3-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m3-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m3-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m3-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m3-1');showModal('m3-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m3-1');showModal('m3-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m3-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
-    <div class="modal-box" id="m3-2">
+    <div class="modal-box" id="m3-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m3-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Merge Sort sorting algorithms</h1>
+        <pre>
+          function mergeSort(start, end, arr) {
+
+            if(start < end){
+                var middle = parseInt(( start + end ) / 2 );
+
+                mergeSort(start, middle, arr);
+                mergeSort( middle + 1, end, arr);
+                merge(start, middle, end, arr);
+            }
+            return arr
+          }
+
+          function merge(start, middle, end, arr) {
+              var arrAux = [];
+              var i = start;
+              var j = middle + 1;
+
+              while ( i <= middle && j <= end){
+                  if( arr[i] < arr[j] ){
+                      arrAux.push(arr[i]);
+                      i += 1;
+                  }else{
+                      arrAux.push(arr[j]);
+                       j += 1;
+                  }
+              }
+
+              while( i <= middle){
+                  arrAux.push(arr[i]);
+                  i += 1;
+              }
+
+              while( j <= end){
+                  arrAux.push(arr[j]);
+                  j += 1;
+              }
+
+              var k = 0;
+              while( start <= end ){
+                  arr[start] = arrAux[k];
+                  start += 1;
+                  k += 1;
+              }
+              return arr;
+          }
+        </pre>
+
+        <button onclick="closeModal('m3-2'); showModal('m3-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
-    <div class="modal-box" id="m3-3">
+    <div class="modal-box" id="m3-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m3-3')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Merge Sort sorting algorithms</h1>
+        <form>
+          <div style="margin-left: 80px; margin-top: 60px">
+            <label for="list-numbers-merge" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+            <input id="list-numbers-merge" placeholder="numbers" type="text" class="list-number" required>
+            <p class="smsError">Aqui va un sms de error</p>
+          </div>
+        </form>
+        <button onclick="showMergeSort()" class="btn-show-list">Show ordering list</button>
+        <p class="showList">Aqui va la lista</p>
+        <div>
+          <button onclick="closeAll()" class="btn-window c-diff float-back" style="left: 60%">Clean all</button>
+          <button onclick="closeModal('m3-3'); showModal('m3-1'); closeAll()" class="btn-window c-diff float-back">Get back</button>
+        </div>
       </div>
     </div>
   </div>
@@ -165,31 +300,71 @@ if __name__ == '__main__':
   <div>
     <div class="modal-box" id="m4-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m4-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m4-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m4-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m4-1');showModal('m4-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m4-1');showModal('m4-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m4-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
     <div class="modal-box" id="m4-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m4-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Binary search algorithms</h1>
+        <pre>
+          function binarySearch(arr, element){
+
+            heapSort(arr);
+            var strat = 0; var end = arr.length - 1;
+
+            while( strat <= end ){
+                var middle = parseInt( ( strat + end ) / 2);
+
+                if( arr[middle] === element ){
+                    return true;
+
+                }else{
+                    if( arr[middle] > element ){
+                        end = middle - 1;
+
+                    }else{
+                        strat = middle + 1;
+                    }
+                }
+            }
+            return false
+          }
+        </pre>
+        <button onclick="closeModal('m4-2'); showModal('m4-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m4-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m4-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m4-3'); showModal('m4-1'); closeAll()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Binary Search algorithm</h1>
+        <form>
+          <div style="margin-left: 80px; margin-top: 60px">
+            <label for="list-numbers-binaryS" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+            <input id="list-numbers-binaryS" placeholder="numbers" type="text" class="list-number" required>
+            <p class="smsError">Aqui va un error</p>
+            <div style="float: right">
+              <label for="element-to-search" style="font-size: 22px">Element</label><br>
+              <input id="element-to-search" placeholder="element" required type="text" class="list-number-to-find">
+              <p id="smsErrorBinary">Aqui va un error</p>
+            </div>
+          </div>
+        </form>
+        <button onclick="showBinarySearch()" class="btn-show-list">Show elemnt</button>
+        <p class="showList" style="margin: 20px 0 0 80px">Aqui va la lista</p>
+        <button onclick="closeAll()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
+
+
 
   <div>
     <div class="modal-box" id="m5-1">
@@ -656,35 +831,49 @@ if __name__ == '__main__':
   </div>
 
 
-  <h1 id="tittle">Algorithms in javaascript</h1>
+  <h1 id="tittle">Algorithms in javascript</h1>
 
   <main>
-    <ul>
-      <li><button onclick="showModal('m1-1')" class="btn-form  c-one">Heap sort</button></li>
-      <li><button onclick="showModal('m2-1')" class="btn-form c-two">Merge sort</button></li>
-      <li><button onclick="showModal('m3-1')" class="btn-form c-three">Binary search</button></li>
-      <li><button onclick="showModal('m4-1')" class="btn-form c-four">PQ</button></li>
-      <li><button onclick="showModal('m5-1')" class="btn-form c-five">Class grafo</button></li>
-      <li><button onclick="showModal('m6-1')" class="btn-form c-six">BFS</button></li>
-      <li><button onclick="showModal('m7-1')" class="btn-form c-seven">DFS</button></li>
-      <li><button onclick="showModal('m8-1')" class="btn-form c-eigth">Kruskal</button></li>
-      <li><button onclick="showModal('m9-1')" class="btn-form c-ten">Djkstra</button></li>
-      <li><button onclick="showModal('m10-1')" class="btn-form c-eleven">Prim</button></li>
-      <li><button onclick="showModal('m11-1')" class="btn-form c-twelve">Floyd</button></li>
-      <li><button onclick="showModal('m12-1')" class="btn-form c-thirteen">Bipartide</button></li>
-      <li><button onclick="showModal('m13-1')" class="btn-form c-fourteen">Is loop</button></li>
-      <li><button onclick="showModal('m14-1')" class="btn-form c-fifteen">RegularGraph</button></li>
-      <li><button onclick="showModal('m15-1')" class="btn-form c-sixteen">C conneted</button></li>
-      <li><button onclick="showModal('m16-1')" class="btn-form c-seventeen">Segment tree</button></li>
-      <li><button onclick="showModal('m17-1')" class="btn-form c-eigthteen">lazy propag...</button></li>
-      <li><button onclick="showModal('m18-1')" class="btn-form c-nineteen">La criba</button></li>
-      <li><button onclick="showModal('m19-1')" class="btn-form c-twenty">Prime factors</button></li>
-      <li><button onclick="showModal('m20-1')" class="btn-form c-twenty-two">+ of divisors</button></li>
-    </ul>
+    <div id="contened-buttom">
+      <ul>
+        <li><button onclick="showModal('m1-1')" class="btn-form  c-one">PQ</button></li>
+        <li><button onclick="showModal('m2-1')" class="btn-form c-two">Heap sort</button></li>
+        <li><button onclick="showModal('m3-1')" class="btn-form c-three">Merge sort</button></li>
+        <li><button onclick="showModal('m4-1')" class="btn-form c-four">Binary search</button></li>
+      </ul>
+      <ul>
+        <li><button onclick="showModal('m5-1')" class="btn-form c-five">Class grafo</button></li>
+        <li><button onclick="showModal('m6-1')" class="btn-form c-six">BFS</button></li>
+        <li><button onclick="showModal('m7-1')" class="btn-form c-seven">DFS</button></li>
+        <li><button onclick="showModal('m8-1')" class="btn-form c-eigth">Floyd</button></li>
+      </ul>
+      <ul>
+        <li><button onclick="showModal('m9-1')" class="btn-form c-ten">Djkstra</button></li>
+        <li><button onclick="showModal('m10-1')" class="btn-form c-eleven">Prim</button></li>
+        <li><button onclick="showModal('m11-1')" class="btn-form c-twelve">Kruskal</button></li>
+        <li><button onclick="showModal('m12-1')" class="btn-form c-thirteen">Bipartide</button></li>
+      </ul>
+      <ul>
+        <li><button onclick="showModal('m13-1')" class="btn-form c-fourteen">Is loop</button></li>
+        <li><button onclick="showModal('m14-1')" class="btn-form c-fifteen">RegularGraph</button></li>
+        <li><button onclick="showModal('m15-1')" class="btn-form c-sixteen">C conneted</button></li>
+        <li><button onclick="showModal('m16-1')" class="btn-form c-seventeen">Segment tree</button></li>
+      </ul>
+      <ul>
+        <li><button onclick="showModal('m17-1')" class="btn-form c-eigthteen">lazy propag...</button></li>
+        <li><button onclick="showModal('m18-1')" class="btn-form c-nineteen">La criba</button></li>
+        <li><button onclick="showModal('m19-1')" class="btn-form c-twenty">Prime factors</button></li>
+        <li><button onclick="showModal('m20-1')" class="btn-form c-twenty-two">+ of divisors</button></li>
+      </ul>
+    </div>
+
   </main>
 
+  <script type="text/javascript" src="algoritmos/modals.js"></script>
+  <script type="text/javascript" src="algoritmos/col1/heapSort.js"></script>
+  <script type="text/javascript" src="algoritmos/col1/mergeSort.js"></script>
+  <script type="text/javascript" src="algoritmos/col1/binarySearch.js"></script>
+  <script type="text/javascript" src="algoritmos/col1/priorityQueue.js"></script>
 
-
-  <script type="text/javascript" src="doc.js"></script>
 </body>
 </html>
