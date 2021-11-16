@@ -2,19 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1010fed7-0fea-438d-9137-acfcde838801" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algoritmos/col1/binarySearch.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algoritmos/col1/heapSort.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algoritmos/col1/mergeSort.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algoritmos/col2/Graph.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algoritmos/col2/bfs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algoritmos/col2/dfs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algoritmos/col3/bipartide.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algoritmos/col3/djkstra.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algoritmos/col3/kruskal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algoritmos/col3/prim.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algoritmos/col4/cConnected.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algoritmos/col4/isLoop.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algoritmos/col4/regularGraph.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algoritmos/col4/st.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algoritmos/col5/criba.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algoritmos/col5/primeFact.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algoritmos/col5/stLazyPropagation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algoritmos/col5/sumDiv.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algoritmos/col1/binarySearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/algoritmos/col1/binarySearch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algoritmos/col2/Graph.js" beforeDir="false" afterPath="$PROJECT_DIR$/algoritmos/col2/graph.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algoritmos/col2/bfs.js" beforeDir="false" afterPath="$PROJECT_DIR$/algoritmos/col2/bfs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algoritmos/col2/dfs.js" beforeDir="false" afterPath="$PROJECT_DIR$/algoritmos/col2/dfs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algoritmos/col2/floyd.js" beforeDir="false" afterPath="$PROJECT_DIR$/algoritmos/col2/floyd.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index-css.css" beforeDir="false" afterPath="$PROJECT_DIR$/index-css.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testing.html" beforeDir="false" afterPath="$PROJECT_DIR$/testing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing.js" beforeDir="false" afterPath="$PROJECT_DIR$/algoritmos/col1/priorityQueue.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +63,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\webs\AprendiendoJs\algoritmos\col1" />
       <recent name="C:\xampp\htdocs\webs\AprendiendoJs\algoritmos" />
+      <recent name="C:\xampp\htdocs\webs\AprendiendoJs\algoritmos\col2" />
+      <recent name="C:\xampp\htdocs\webs\AprendiendoJs\algoritmos\col1" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -86,7 +95,15 @@
       <workItem from="1634774851065" duration="7600000" />
       <workItem from="1634830158680" duration="14479000" />
       <workItem from="1635254577110" duration="13311000" />
-      <workItem from="1635342432900" duration="893000" />
+      <workItem from="1635342432900" duration="19601000" />
+      <workItem from="1635391137144" duration="119000" />
+      <workItem from="1635473687309" duration="6289000" />
+      <workItem from="1635561447378" duration="7111000" />
+      <workItem from="1636559121041" duration="33268000" />
+      <workItem from="1636652310486" duration="11659000" />
+      <workItem from="1636751612168" duration="15506000" />
+      <workItem from="1637035048352" duration="2255000" />
+      <workItem from="1637075344730" duration="8147000" />
     </task>
     <servers />
   </component>
@@ -106,18 +123,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="356" y="173" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1633721425669" />
-    <state x="0" y="0" width="709" height="546" key="find.popup" timestamp="1635265248907">
+    <state x="0" y="0" width="709" height="546" key="find.popup" timestamp="1637036682456">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" width="709" height="546" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1635265248907" />
-    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1634761160819">
+    <state x="0" y="0" width="709" height="546" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1637036682456" />
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1637080905171">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1634761160819" />
-    <state x="346" y="49" key="search.everywhere.popup" timestamp="1634582395785">
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1637080905171" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1635353801097">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1634582395785" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1635353801097" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -136,6 +153,16 @@
           <url>file://$PROJECT_DIR$/algoritmos/col1/heapSort.js</url>
           <line>69</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/algoritmos/col2/graph.js</url>
+          <line>450</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/algoritmos/col2/graph.js</url>
+          <line>269</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

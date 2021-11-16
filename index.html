@@ -364,33 +364,245 @@
     </div>
   </div>
 
-
-
   <div>
     <div class="modal-box" id="m5-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m5-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m5-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m5-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m5-1');showModal('m5-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m5-1');showModal('m5-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m5-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
     <div class="modal-box" id="m5-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m5-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Class graph</h1>
+        <pre>
+          class Graph {
+
+            constructor() {
+                this.arrVertex = [];
+                this.arrEdge = [];
+            }
+
+            addVertext(v) {
+                if (!this.existVertex(v)) {
+                    this.arrVertex.push(v);
+                    this.arrEdge.push([]);
+                }
+            }
+
+            addEdge(v1, v2) {
+                var indexV1 = this.arrVertex.indexOf(v1);
+                var indexV2 = this.arrVertex.indexOf(v2);
+
+                if (this.existVertex(v1) && this.existVertex(v2)) {
+                    this.arrEdge[indexV1].push(indexV2);
+                    this.arrEdge[indexV2].push(indexV1);
+                }
+            }
+
+            removeVertex(v) {
+                var index = this.arrVertex.indexOf(v);
+
+                if (this.existVertex(v)) {
+                    this.arrVertex.splice(index, 1);
+                    this.arrEdge.splice(index, 1);
+
+                    for (var i = 0; i < this.arrEdge.length; i++) {
+                        if (this.arrEdge[i].includes(index)) {
+                            this.arrEdge[i].splice(this.arrEdge[i].indexOf(index), 1);
+                        }
+                    }
+                }
+            }
+
+            removeEdge(v1, v2) {
+                var indexV1 = this.arrVertex.indexOf(v1);
+                var indexV2 = this.arrVertex.indexOf(v2);
+
+                if (this.existVertex(v1) && this.existVertex(v2)) {
+                    this.arrEdge[indexV1].splice(this.arrEdge[indexV1].indexOf(indexV2), 1);
+                    this.arrEdge[indexV2].splice(this.arrEdge[indexV2].indexOf(indexV1), 1);
+                }
+            }
+
+            isEmpty() {
+                return this.arrVertex.length !== 0;
+            }
+
+            existVertex(v) {
+                var index = this.arrVertex.indexOf(v);
+                return index !== -1;
+            }
+
+            existEdge(v1, v2) {
+                var indexV1 = this.arrVertex.indexOf(v1);
+                var indexV2 = this.arrVertex.indexOf(v2);
+
+                if (this.existVertex(v1) && this.existVertex(v2)) {
+                    if (this.arrEdge[indexV1].includes(indexV2) && this.arrEdge[indexV2].includes(indexV1)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            numberVertex() {
+                return this.arrVertex.length;
+            }
+
+            numberEdge() {
+                var count = 0;
+                for (var i = 0; i < this.arrEdge.length; i++) {
+                    count += this.arrEdge[i].length;
+                }
+                return count / 2;
+            }
+
+            vertexAdyacenntes(v) {
+                var index = this.arrVertex.indexOf(v);
+                var arrAdj = [];
+
+                if (this.existVertex(v)) {
+                    arrAdj.push(this.arrEdge[index])
+                }
+                return arrAdj
+            }
+          }
+        </pre>
+        <button onclick="closeModal('m5-2'); showModal('m5-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m5-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m5-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m5-3'); showModal('m5-1'); closeAll()" class="closeX">X</button>
+
+        <div class="contened-top-graph">
+          <h1><i>Class Graph</i></h1>
+          <button onclick="closeAll()" class="btn-graph btn-width-big" style="margin-right: 6%; margin-top: 10px">Clean all</button>
+        </div>
+
+        <div class="cont-btn-graph">
+          <button onclick="isEmpty()" class="btn-graph btn-width-big">IsEmpty</button>
+          <button onclick="numberV()" class="btn-graph btn-width-big">NVertexes</button>
+          <button onclick="numberEdge()" class="btn-graph btn-width-big">NEdges</button>
+          <button onclick="showGraph()" class="btn-graph btn-width-big" style="margin-left: 30%">showArr</button>
+        </div>
+
+        <div style="margin-top: 30px"> <!--formulario-->
+
+          <div class="cont-input">
+            <div>
+              <label for="addV">Add vertex:</label><br>
+              <div class="ptn-referencia-position">
+                <input id="addV" placeholder="V" type="text">
+                <p class="errorGraph">Aqui va un error</p>
+                <button onclick="addV()" class="btn-small-graph btn-width-small">+</button>
+              </div>
+            </div>
+
+            <div>
+              <label for="addEdge">Add edge:</label><br>
+              <div class="ptn-referencia-position">
+                <input id="addEdge" placeholder="V1-V2" type="text">
+                <button onclick="addEdge()" class="btn-small-graph btn-width-small">+</button>
+                <p class="errorGraph" id="errorAddEdge">Aqui va un error</p>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="cont-input">
+            <div>
+              <label for="removeV">Remove vertex:</label><br>
+              <div class="ptn-referencia-position">
+                <input id="removeV" placeholder="V" type="text">
+                <p class="errorGraph" id="errorRevomeV">Aqui va un error</p>
+                <button onclick="removeV()" class="btn-small-graph btn-width-small">-</button>
+              </div>
+            </div>
+
+            <div>
+              <label for="removeEdge">Remove edge:</label><br>
+              <div class="ptn-referencia-position">
+                <input id="removeEdge" placeholder="V1-V2" type="text">
+                <p class="errorGraph" id="errorRevomeEdge">Aqui va un error</p>
+                <button onclick="removeEdge()" class="btn-small-graph btn-width-small">-</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="cont-input">
+            <div>
+              <label for="addV">Exist vertex:</label><br>
+              <div class="ptn-referencia-position">
+                <input id="existV" placeholder="V" type="text">
+                <button onclick="existV()" class="btn-small-graph btn-width-small">?</button>
+                <p id="respuesta">Answer</p>
+              </div>
+            </div>
+
+            <div>
+              <label for="existEdge">Exist edge:</label><br>
+              <div class="ptn-referencia-position">
+                <input id="existEdge" placeholder="V1-V2" type="text">
+                <p class="errorGraph" id="ErrorexistEdge">Aqui va un error</p>
+                <button onclick="existEdge()" class="btn-small-graph btn-width-small">?</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!--Modales para la respuesta de los grafos-->
+        <div>
+          <div class="modal-box" id="mg-1">
+            <div class="window-Graph">
+              <button onclick="closeModal('mg-1'); showModal('m5-3'); closeAll()" class="closeX" style="right: 29.8%">X</button>
+              <h1 class="tittle-window-choose">Answer</h1>
+              <p class="showListGraph">Aqui va la respuesta</p>
+            </div>
+          </div>
+
+          <div class="modal-box" id="mg-2">
+            <div class="window-Graph">
+              <button onclick="closeModal('mg-2'); showModal('m5-3'); closeAll()" class="closeX" style="right: 29.8%">X</button>
+              <h1 class="tittle-window-choose">Answer</h1>
+              <p class="showListGraph">Aqui va la respuesta</p>
+            </div>
+          </div>
+
+          <div class="modal-box" id="mg-3">
+            <div class="window-Graph">
+              <button onclick="closeModal('mg-3'); showModal('m5-3'); closeAll()" class="closeX" style="right: 29.8%">X</button>
+              <h1 class="tittle-window-choose">Answer</h1>
+              <p class="showListGraph">Aqui va la respuesta</p>
+            </div>
+          </div>
+
+          <div class="modal-box" id="mg-4">
+            <div class="window-Graph">
+              <button onclick="closeModal('mg-4'); showModal('m5-3'); closeAll()" class="closeX" style="right: 29.8%">X</button>
+              <h1 class="tittle-window-choose" style="margin-top: 20px">Answer</h1>
+
+              <h2 style="margin-left: 30px; margin-bottom: 0" >Lista of vertex</h2>
+              <div id="listaVertex">
+                <ul id="ulListV"></ul>
+              </div>
+
+              <h2 style="margin-left: 30px">Lista of edge</h2>
+              <div id="listaEdges">
+                <ul id="ulListEdge"></ul>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -398,28 +610,62 @@
   <div>
     <div class="modal-box" id="m6-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m6-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m6-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m6-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m6-1');showModal('m6-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m6-1');showModal('m6-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m6-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
     <div class="modal-box" id="m6-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m6-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithms BFS</h1>
+        <button onclick="closeModal('m6-2'); showModal('m6-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m6-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m6-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m6-3'); showModal('m6-1'); closeAll()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm BFS</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToBFS" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToBFS" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addListVBFS()" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="errorInpBFS">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edges" style="font-size: 22px">Pair of edges:</label><br>
+          <input id="edges" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdgeBFS()" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="errorInpEdges" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListsBFS()" class="btn-show-list" style="width: 15%">Show lists</button>
+          <button onclick="bfsHTMLBFS()" class="btn-show-list" style="width: 10%;">BFS</button>
+          <div style="margin-left: 45px; display: inline">
+            <input id="nodeStrar" placeholder="node strat" required type="text" class="list-number-to-find" style="width: 8%;
+          padding: 17px">
+            <p class="smsError"id="errorNode" style="margin-left: 512px;" >Aqui va un error</p>
+          </div>
+        </div>
+
+        <div style="margin-top: -25px">
+          <p class="listAlgGraf" id="listV" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittleLEdges" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="listEdge" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdges" style="padding-left: 0">
+            </ul>
+          </div>
+
+          <p class="listAlgGraf" id="listBFS" style="margin: 20px 0 0 80px"></p>
+        </div>
+        <button onclick="closeAllBFS()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
@@ -427,28 +673,62 @@
   <div>
     <div class="modal-box" id="m7-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m7-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m7-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m7-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m7-1');showModal('m7-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m7-1');showModal('m7-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m7-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
     <div class="modal-box" id="m7-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m7-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithms DFS</h1>
+        <button onclick="closeModal('m7-2'); showModal('m7-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m7-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m7-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m7-3'); showModal('m7-1'); closeAll()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm DFS</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToDFS" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToDFS" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addListVDFS()" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="errorInpDFS">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edgesDFS" style="font-size: 22px">Pair of edges:</label><br>
+          <input id="edgesDFS" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdgeDFS()" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="errorInpEdgesDFS" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListsDFS()" class="btn-show-list" style="width: 15%">Show lists</button>
+          <button onclick="dfsHTMLDFS()" class="btn-show-list" style="width: 10%;">DFS</button>
+          <div style="margin-left: 45px; display: inline">
+            <input id="nodeStrarDFS" placeholder="node strat" required type="text" class="list-number-to-find" style="width: 8%;
+          padding: 17px">
+            <p class="smsError"id="errorNodeDFS" style="margin-left: 512px;" >Aqui va un error</p>
+          </div>
+        </div>
+
+        <div style="margin-top: -25px">
+          <p class="listAlgGraf" id="listVDFS" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittleLEdgesDFS" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="listEdgeDFS" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdgesDFS" style="padding-left: 0">
+            </ul>
+          </div>
+
+          <p class="listAlgGraf" id="listDFS" style="margin: 20px 0 0 80px"></p>
+        </div>
+        <button onclick="closeAllDFS()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
@@ -456,31 +736,63 @@
   <div>
     <div class="modal-box" id="m8-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m8-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m8-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m8-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m8-1');showModal('m8-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m8-1');showModal('m8-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m8-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
     <div class="modal-box" id="m8-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m8-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithm Floyd</h1>
+        <button onclick="closeModal('m8-2'); showModal('m8-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m8-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m8-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m8-3'); showModal('m8-1'); closeAll()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm Floyd</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToFloyd" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToFloyd" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addListVFloyd()" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="errorInpFloyd">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edgesFloyd" style="font-size: 22px">Pair of edges:</label><br>
+          <input id="edgesFloyd" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdgeFloyd()" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="errorInpEdgesFloyd" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListsFloyd()" class="btn-show-list" style="width: 15%">Show lists</button>
+          <button onclick="FloydHTMLFloyd()" class="btn-show-list" style="width: 10%;">Floyd</button>
+        </div>
+
+        <div style="margin-top: 35px">
+          <p class="listAlgGraf" id="listVFloyd" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittleLEdgesFloyd" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="listEdgeFloyd" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdgesFloyd" style="padding-left: 0">
+            </ul>
+          </div>
+
+          <p class="listAlgGraf" id="listFloyd" style="margin: 20px 0 0 80px"></p>
+        </div>
+        <button onclick="closeAllFloyd()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
+
+
+
 
   <div>
     <div class="modal-box" id="m9-1">
@@ -874,6 +1186,22 @@
   <script type="text/javascript" src="algoritmos/col1/mergeSort.js"></script>
   <script type="text/javascript" src="algoritmos/col1/binarySearch.js"></script>
   <script type="text/javascript" src="algoritmos/col1/priorityQueue.js"></script>
+  <script type="text/javascript" src="algoritmos/col2/graph.js"></script>
+  <script type="text/javascript" src="algoritmos/col2/bfs.js"></script>
+  <script type="text/javascript" src="algoritmos/col2/dfs.js"></script>
+  <script type="text/javascript" src="algoritmos/col2/floyd.js"></script>
+  <script type="text/javascript" src="algoritmos/col3/kruskal.js"></script>
+  <script type="text/javascript" src="algoritmos/col3/prim.js"></script>
+  <script type="text/javascript" src="algoritmos/col3/bipartide.js"></script>
+  <script type="text/javascript" src="algoritmos/col3/djkstra.js"></script>
+  <script type="text/javascript" src="algoritmos/col4/cConnected.js"></script>
+  <script type="text/javascript" src="algoritmos/col4/isLoop.js"></script>
+  <script type="text/javascript" src="algoritmos/col4/regularGraph.js"></script>
+  <script type="text/javascript" src="algoritmos/col4/st.js"></script>
+  <script type="text/javascript" src="algoritmos/col5/criba.js"></script>
+  <script type="text/javascript" src="algoritmos/col5/primeFact.js"></script>
+  <script type="text/javascript" src="algoritmos/col5/stLazyPropagation.js"></script>
+  <script type="text/javascript" src="algoritmos/col5/sumDiv.js"></script>
 
 </body>
 </html>

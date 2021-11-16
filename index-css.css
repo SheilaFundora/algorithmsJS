@@ -2,7 +2,7 @@
     padding-top: 30px;
     text-align: center;
     font-size: 45px;
-    color: #910504;
+color:  var(--dark-error-red);
     font-family: cursive;
 }
 body{
@@ -12,6 +12,10 @@ body{
 :root{
     --dark-green: #478d75;
     --ligth-green: #64c7a5;
+    --ligth-blue: rgba(78,158,131,0.15);
+    --ligth-blue-toHover: rgba(78,158,131,0.40);
+    --dark-error-red: #910504;
+
 }
 
 main{
@@ -168,6 +172,7 @@ button.c-one{
     height: 300px;
     margin: auto auto;
     margin-top: 140px;
+
 }
 
 h1.tittle-window-choose{
@@ -259,7 +264,6 @@ div.contened-btn-menu-choose{
     transition-delay: 0s;
     transition-duration: 0.2s;
     transition-timing-function: linear;
-
 }
 
 .btn-show-list:hover{
@@ -282,17 +286,17 @@ input.list-number{
 }
 
 p.smsError{
-    color: #910504;
+color:  var(--dark-error-red);
     font-size: 18px;
     visibility: hidden;
 }
 
 p#smsErrorAdd{
-    color: #910504;
+color:  var(--dark-error-red);
     font-size: 18px;
     visibility: hidden;
 }p#smsErrorBinary{
-    color: #910504;
+color:  var(--dark-error-red);
     font-size: 18px;
     visibility: hidden;
 }
@@ -367,3 +371,165 @@ button.closeX{
 button.closeX:hover{
     background-color: rgba(145, 5, 4, 0.68);
 }
+
+button.btn-graph{
+    color: black;
+    border-radius: 5px;
+    border: none;
+    font-size: 21px;
+    outline: none;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    background-color: transparent;
+    font-family: Arial;
+    transition-property: background-color;
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    font-weight: bold;
+}
+
+button.btn-width-small{
+
+}
+button.btn-width-big{
+    width: 16%;
+    padding: 15px;
+}
+
+button.btn-graph:hover{
+    background-color: var(--ligth-blue-toHover);
+    transition: background-color;
+    transition-duration: 0.2s;
+    transition-delay: 0s;
+    transition-timing-function: linear;
+}
+
+div.contened-top-graph{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 7px #d2d2d2;
+
+}
+div.contened-top-graph h1{
+    font-family: Arial;
+    font-size: 38px;
+    white-space: pre-wrap;
+    background-color: white;
+    margin-left: 20px;
+}
+
+div.cont-btn-graph{
+    display: flex;
+    background-color: rgba(78,158,131,0.15);
+    z-index: 2;
+
+}
+
+div.cont-input{
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 50px 0 50px;
+}
+div.cont-input input{
+    padding: 15px 50px;
+    border-radius: 5px;
+    box-shadow: none;
+    border: 1px solid gray;
+    margin: 0;
+}
+.ptn-referencia-position{
+    position: relative;
+}
+button.btn-small-graph{
+    position: absolute;
+    background-color: var(--ligth-blue-toHover);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    top: 0;
+    right: 0;
+    font-size: 22px;
+    outline: none;
+
+}
+button.btn-small-graph:hover{
+    background-color: rgba(78,158,131,0.60) ;
+}
+
+div.cont-input label{
+    font-size: 18px;
+    font-family: Arial;
+}
+
+p.errorGraph{
+    margin-top: 8px;;
+color:  var(--dark-error-red);
+    font-size: 18px;
+    visibility: hidden;
+}
+
+div.window-Graph{
+    background-color: white;
+    border-radius: 8px;
+    width: 550px;
+    height: 350px;
+    margin: auto auto;
+    margin-top: 120px;
+    overflow-y: auto;
+}
+
+p.showListGraph{
+    font-size: 24px;
+    text-align: center;
+    margin-top: 40px;
+}
+div.listasGraph{
+    visibility: hidden;
+    font-size: 24px;
+    text-align: center;
+}
+div#listaVertex{
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 40px;
+    display: none;
+}
+div#listaEdges{
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 40px;
+    display: none;
+}
+p#respuesta{
+    font-size: 20px;
+    visibility: hidden;
+}
+
+.listAlgGraf{
+    font-size: 22px;
+    margin-left: 10px;
+}
+
+button.diffListVinp{
+    left: 89.4%;
+    top: 24.5%;
+    height: 45.5%;
+    background-color: var(--dark-green);
+}
+
+button.diffListVinp:hover{
+    background-color: var(--ligth-green);
+}
+
+button.diffPairV{
+    left: 57.5%;
+    top: 18.5%;
+    height: 41.5%;
+    background-color: var(--dark-green);
+}
+button.diffPairV:hover{
+    background-color: var(--dark-green);
+}
+
