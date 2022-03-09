@@ -59,7 +59,6 @@ function binarySearch(arr, element){
 }
 
 function showBinarySearch() {
-    debugger
     inputList = document.getElementsByClassName("list-number")[3];
     parafo = document.getElementsByClassName("showList")[3];
     errorSms = document.getElementsByClassName("smsError")[3];
@@ -103,7 +102,6 @@ function showBinarySearch() {
             errorB.style.visibility="visible";
         }
 
-
         if( !containString && ! elementIsString ){
             for(var i = 0; i < arr.length; i++){
                 arr[i] = Number(arr[i]);
@@ -121,7 +119,7 @@ function showBinarySearch() {
     }
 }
 
-function closeAll() {
+function closeAllBB() {
     if (typeof inputList !== "undefined") {
         inputList.value = "";
     }

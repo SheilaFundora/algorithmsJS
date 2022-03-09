@@ -70,66 +70,12 @@ class Priorityqueue{
 }
 
 function showPq() {
-    debugger
-    inputList = document.getElementsByClassName("list-number")[0];
     parafo = document.getElementsByClassName("showList")[0];
-    errorSms = document.getElementsByClassName("smsError")[0];
-
     parafo.style.visibility="hidden";
-    errorSms.style.visibility="hidden";
 
-    if( typeof pq === "undefined"){
-        var arrString = inputList.value;
-        if(arrString === ""){
-            errorSms.innerHTML = "Empty entry is not allowed, enter numbers";
-            errorSms.style.visibility="visible";
-        }else{
-            arrString = arrString.trim();
-            var arr = arrString.split(" ");
-            var containString = false;
-
-            for( var i = 0; i < arr.length; i++ ){
-                if(arr[i] === ""){
-                    arr.splice(i,1);
-                }
-                if( isNaN(arr[i]) ){
-                    containString = true;
-                    errorSms.innerHTML = "Only numbers please";
-                    errorSms.style.visibility="visible";
-                }
-            }
-            for(var i = 0; i < arr.length; i++){
-                if( arr[i] !== ""){
-                    arr[i] = Number(arr[i]);
-                }else{
-                    arr.splice(i,1);
-                }
-            }
-
-            if( ! containString ){
-                pq = new Priorityqueue(arr);
-                var newArr =  "";
-                for( var i = 0; i < arr.length; i++ ){
-                    newArr += pq.arr[i] + " ";
-                }
-                if(pq.size > 0){
-                    parafo.innerHTML = newArr;
-                    parafo.style.visibility="visible";
-                }
-                else{
-                    parafo.innerHTML = "The priority queue is empty now";
-                    parafo.style.visibility="visible";
-                }
-
-            }
-        }
-    }else{
-        var newArr =  "";
-        for( var i = 0; i < pq.size; i++ ){
-            newArr += pq.arr[i] + " ";
-        }
+    if( typeof pq !== "undefined" ){
         if(pq.size > 0){
-            parafo.innerHTML = newArr;
+            parafo.innerHTML = pq.arr;
             parafo.style.visibility="visible";
         }
         else{
@@ -137,7 +83,56 @@ function showPq() {
             parafo.style.visibility="visible";
         }
     }
+    else{
+        parafo.innerHTML = "The priority queue is empty now";
+        parafo.style.visibility="visible";
+    }
+}
 
+function addArr() {
+    closeSmsAux();
+    inputList = document.getElementsByClassName("list-number")[0];
+    errorSms = document.getElementsByClassName("smsError")[0];
+
+    errorSms.style.visibility="hidden";
+    var arrString = inputList.value;
+
+    if(arrString === ""){
+        errorSms.innerHTML = "Empty entry is not allowed, enter numbers";
+        errorSms.style.visibility="visible";
+    }else{
+        arrString = arrString.trim();
+        var arr = arrString.split(" ");
+        var containString = false;
+
+        for( var i = 0; i < arr.length; i++ ){
+            if(arr[i] === ""){
+                arr.splice(i,1);
+            }
+            if( isNaN(arr[i]) ){
+                containString = true;
+                errorSms.innerHTML = "Only numbers please";
+                errorSms.style.visibility="visible";
+            }
+        }
+        for(var i = 0; i < arr.length; i++){
+            if( arr[i] !== ""){
+                arr[i] = Number(arr[i]);
+            }else{
+                arr.splice(i,1);
+            }
+        }
+
+        if( ! containString ){
+            pq = new Priorityqueue(arr);
+            var newArr =  "";
+            for( var i = 0; i < arr.length; i++ ){
+                newArr += pq.arr[i] + " ";
+            }
+        }
+    }
+
+    inputList.value = "";
 }
 
 function getOut() {
@@ -194,11 +189,12 @@ function getOut() {
             showExtraer.style.visibility = "visible";
         }
     }
+    showPq();
 
 }
 
 function addElement() {
-    debugger
+    closeSmsAux();
     errorAdd = document.getElementById("smsErrorAdd");
     inputElementToAdd = document.getElementById("element-to-add");
 
@@ -220,13 +216,19 @@ function addElement() {
                 arr = [element];
                 pq = new Priorityqueue(arr);
             }else{
-                pq.add(element)
+                pq.add(element);
+                errorAdd.style.visibility = "visible";
+
+                errorAdd.style.color = "green";
+
             }
         }
+        showPq();
+        inputElementToAdd.value = "";
     }
 }
 
-function closeAll(){
+function closeAllPQ(){
     if(typeof inputList !== "undefined" ){inputList.value = "";}
     if(typeof parafo !== "undefined" ){ parafo.style.visibility="hidden";}
     if(typeof errorSms !== "undefined" ){ errorSms.style.visibility="hidden";}
@@ -239,5 +241,15 @@ function closeAll(){
     if( typeof pq !== "undefined"){
         pq = undefined;
     }
+}
+
+function closeSmsAux(){
+    if(typeof parafo !== "undefined" ){ parafo.style.visibility="hidden";}
+    if(typeof errorSms !== "undefined" ){ errorSms.style.visibility="hidden";}
+
+    if( typeof errorExtrear !== "undefined"){errorExtrear.style.visibility="hidden";}
+    if( typeof showExtraer !== "undefined"){showExtraer.style.visibility = "hidden";}
+    if( typeof errorAdd !== "undefined"){errorAdd.style.visibility = "hidden";}
+
 }
 

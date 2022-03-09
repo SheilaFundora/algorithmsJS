@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="1010fed7-0fea-438d-9137-acfcde838801" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="1010fed7-0fea-438d-9137-acfcde838801" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+>>>>>>> rama-test
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +37,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -38,6 +45,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -81,7 +89,12 @@
       <workItem from="1636652310486" duration="11659000" />
       <workItem from="1636751612168" duration="15506000" />
       <workItem from="1637035048352" duration="2255000" />
+<<<<<<< HEAD
       <workItem from="1637075344730" duration="8664000" />
+=======
+      <workItem from="1637075344730" duration="9049000" />
+      <workItem from="1637088038985" duration="153000" />
+>>>>>>> rama-test
     </task>
     <servers />
   </component>
@@ -101,6 +114,17 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="356" y="173" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1633721425669" />
+<<<<<<< HEAD
+=======
+    <state x="463" y="121" key="FileChooserDialogImpl" timestamp="1637088033726">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="121" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1637088033726" />
+    <state x="186" y="9" key="SettingsEditor" timestamp="1637087996011">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="186" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1637087996011" />
+>>>>>>> rama-test
     <state x="0" y="0" width="709" height="546" key="find.popup" timestamp="1637036682456">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -133,12 +157,20 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
+<<<<<<< HEAD
           <url>file://$PROJECT_DIR$/../AlgorithmsJs/algoritmos/col2/graph.js</url>
+=======
+          <url>file://$PROJECT_DIR$/algoritmos/col2/graph.js</url>
+>>>>>>> rama-test
           <line>450</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
+<<<<<<< HEAD
           <url>file://$PROJECT_DIR$/../AlgorithmsJs/algoritmos/col2/graph.js</url>
+=======
+          <url>file://$PROJECT_DIR$/algoritmos/col2/graph.js</url>
+>>>>>>> rama-test
           <line>269</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>

@@ -101,31 +101,37 @@
 
     <div class="modal-box" id="m1-3"  >
       <div class="window-code">
-        <button onclick="closeModal('m1-3'); showModal('m1-1'); closeAll()" class="closeX">X</button>
+        <button onclick="closeModal('m1-3'); showModal('m1-1'); closeAllPQ()" class="closeX">X</button>
         <h1 class="tittle-code">Priority Queue data estructure</h1>
-        <form>
-          <div style="margin-left: 80px; margin-top: 50px">
+
+        <div style="margin-left: 80px; margin-top: 50px">
+          <div class="ptn-referencia-position" style="margin-top: 50px">
             <label for="list-numbers-pq" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
             <input id="list-numbers-pq" placeholder="numbers" type="text" class="list-number" required>
-            <p class="smsError">Aqui va un sms de error</p>
-            <div style="float: right; margin-top: -25px">
-              <label for="element-to-add" style="font-size: 22px">Add</label><br>
-              <input id="element-to-add" placeholder="element" type="text" class="list-add">
-              <p id="smsErrorAdd"> Aqui va un sms de error</p>
-            </div>
+            <button onclick="addArr()" class="btn-small-graph btn-width-small diffListVinp">+</button>
+
+            <p class="smsError" id="smsError">Aqui va un error para la input</p>
           </div>
-        </form>
-        <button onclick="addElement()" class="btn-show-list btnAdd">+</button>
+          <div style="float: right; margin-top: -25px">
+            <label for="element-to-add" style="font-size: 22px">Add</label><br>
+            <input id="element-to-add" placeholder="element" type="text" class="list-add">
+            <p id="smsErrorAdd"> Aqui va un sms de error</p>
+          </div>
+        </div>
+
+        <button onclick="addElement()" class="btn-show-list btnAdd" style="left: 80.2%;">+</button>
         <div style="margin-top: -15px">
           <button onclick="showPq()" class="btn-show-list" style="width: 100px">Show</button>
           <p class="showList" style="display: inline; margin-left: 15px!important;">Aqui va la lista</p>
         </div>
+
         <div style="margin-top: 40px">
           <button onclick="getOut()" class="btn-show-list" style="width: 120px">Get Out</button>
           <p id="extraerPQ" style="display: inline">Aqui va un valor</p>
           <p id="smsErrorRemove">Aqui va un errorr</p>
         </div>
-        <button onclick="closeAll()" class ="btn-window c-diff float-back" style="margin-top: -32px">Clean all</button>
+
+        <button onclick="closeAllPQ()" class ="btn-window c-diff float-back" style="margin-top: -32px">Clean all</button>
       </div>
     </div>
   </div>
@@ -201,10 +207,10 @@
           </div>
         </form>
         <button onclick="showHeapSort()" class="btn-show-list">Show ordering list</button>
-        <p class="showList">Aqui va la lista</p>
+        <p class="showList" style="width: 45%">Aqui va la lista</p>
         <div>
-          <button onclick="closeAll()" class="btn-window c-diff float-back" style="left: 60%">Clean all</button>
-          <button onclick="closeModal('m2-3'); showModal('m2-1'); closeAll()" class="btn-window c-diff float-back">Get back</button>
+          <button onclick="closeAllHeapSort()" class="btn-window c-diff float-back" style="left: 60%">Clean all</button>
+          <button onclick="closeModal('m2-3'); showModal('m2-1'); closeAllHeapSort()" class="btn-window c-diff float-back">Get back</button>
         </div>
       </div>
     </div>
@@ -288,10 +294,10 @@
           </div>
         </form>
         <button onclick="showMergeSort()" class="btn-show-list">Show ordering list</button>
-        <p class="showList">Aqui va la lista</p>
+        <p class="showList" style="width: 45%">Aqui va la lista</p>
         <div>
-          <button onclick="closeAll()" class="btn-window c-diff float-back" style="left: 60%">Clean all</button>
-          <button onclick="closeModal('m3-3'); showModal('m3-1'); closeAll()" class="btn-window c-diff float-back">Get back</button>
+          <button onclick="closeAllMerge()" class="btn-window c-diff float-back" style="left: 60%">Clean all</button>
+          <button onclick="closeModal('m3-3'); showModal('m3-1'); closeAllMerge()" class="btn-window c-diff float-back">Get back</button>
         </div>
       </div>
     </div>
@@ -342,7 +348,7 @@
 
     <div class="modal-box" id="m4-3"  >
       <div class="window-code">
-        <button onclick="closeModal('m4-3'); showModal('m4-1'); closeAll()" class="closeX">X</button>
+        <button onclick="closeModal('m4-3'); showModal('m4-1'); closeAllBB()" class="closeX">X</button>
 
         <h1 class="tittle-code">Binary Search algorithm</h1>
         <form>
@@ -359,38 +365,251 @@
         </form>
         <button onclick="showBinarySearch()" class="btn-show-list">Show elemnt</button>
         <p class="showList" style="margin: 20px 0 0 80px">Aqui va la lista</p>
-        <button onclick="closeAll()" class="btn-window c-diff float-back" >Clean all</button>
+        <button onclick="closeAllBB()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
 
 
-
   <div>
     <div class="modal-box" id="m5-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m5-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m5-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m5-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m5-1');showModal('m5-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m5-1');showModal('m5-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m5-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
     <div class="modal-box" id="m5-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m5-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Class graph</h1>
+        <pre>
+          class Graph {
+
+            constructor() {
+                this.arrVertex = [];
+                this.arrEdge = [];
+            }
+
+            addVertext(v) {
+                if (!this.existVertex(v)) {
+                    this.arrVertex.push(v);
+                    this.arrEdge.push([]);
+                }
+            }
+
+            addEdge(v1, v2) {
+                var indexV1 = this.arrVertex.indexOf(v1);
+                var indexV2 = this.arrVertex.indexOf(v2);
+
+                if (this.existVertex(v1) && this.existVertex(v2)) {
+                    this.arrEdge[indexV1].push(indexV2);
+                    this.arrEdge[indexV2].push(indexV1);
+                }
+            }
+
+            removeVertex(v) {
+                var index = this.arrVertex.indexOf(v);
+
+                if (this.existVertex(v)) {
+                    this.arrVertex.splice(index, 1);
+                    this.arrEdge.splice(index, 1);
+
+                    for (var i = 0; i < this.arrEdge.length; i++) {
+                        if (this.arrEdge[i].includes(index)) {
+                            this.arrEdge[i].splice(this.arrEdge[i].indexOf(index), 1);
+                        }
+                    }
+                }
+            }
+
+            removeEdge(v1, v2) {
+                var indexV1 = this.arrVertex.indexOf(v1);
+                var indexV2 = this.arrVertex.indexOf(v2);
+
+                if (this.existVertex(v1) && this.existVertex(v2)) {
+                    this.arrEdge[indexV1].splice(this.arrEdge[indexV1].indexOf(indexV2), 1);
+                    this.arrEdge[indexV2].splice(this.arrEdge[indexV2].indexOf(indexV1), 1);
+                }
+            }
+
+            isEmpty() {
+                return this.arrVertex.length !== 0;
+            }
+
+            existVertex(v) {
+                var index = this.arrVertex.indexOf(v);
+                return index !== -1;
+            }
+
+            existEdge(v1, v2) {
+                var indexV1 = this.arrVertex.indexOf(v1);
+                var indexV2 = this.arrVertex.indexOf(v2);
+
+                if (this.existVertex(v1) && this.existVertex(v2)) {
+                    if (this.arrEdge[indexV1].includes(indexV2) && this.arrEdge[indexV2].includes(indexV1)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            numberVertex() {
+                return this.arrVertex.length;
+            }
+
+            numberEdge() {
+                var count = 0;
+                for (var i = 0; i < this.arrEdge.length; i++) {
+                    count += this.arrEdge[i].length;
+                }
+                return count / 2;
+            }
+
+            vertexAdyacenntes(v) {
+                var index = this.arrVertex.indexOf(v);
+                var arrAdj = [];
+
+                if (this.existVertex(v)) {
+                    arrAdj.push(this.arrEdge[index])
+                }
+                return arrAdj
+            }
+          }
+        </pre>
+        <button onclick="closeModal('m5-2'); showModal('m5-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m5-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m5-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m5-3'); showModal('m5-1'); closeAll()" class="closeX">X</button>
+
+        <div class="contened-top-graph">
+          <h1><i>Class Graph</i></h1>
+          <button onclick="closeAll()" class="btn-graph btn-width-big" style="margin-right: 6%; margin-top: 10px">Clean all</button>
+        </div>
+
+        <div class="cont-btn-graph">
+          <button onclick="isEmpty()" class="btn-graph btn-width-big">IsEmpty</button>
+          <button onclick="numberV()" class="btn-graph btn-width-big">NVertexes</button>
+          <button onclick="numberEdge()" class="btn-graph btn-width-big">NEdges</button>
+          <button onclick="showGraph()" class="btn-graph btn-width-big" style="margin-left: 30%">showArr</button>
+        </div>
+
+        <div style="margin-top: 30px"> <!--formulario-->
+
+          <div class="cont-input">
+            <div>
+              <label for="addV">Add vertex:</label><br>
+              <div class="ptn-referencia-position">
+                <input id="addV" placeholder="V" type="text">
+                <p class="errorGraph">Aqui va un error</p>
+                <button onclick="addV()" class="btn-small-graph btn-width-small">+</button>
+              </div>
+            </div>
+
+            <div>
+              <label for="addEdge">Add edge:</label><br>
+              <div class="ptn-referencia-position">
+                <input id="addEdge" placeholder="V1-V2" type="text">
+                <button onclick="addEdge()" class="btn-small-graph btn-width-small">+</button>
+                <p class="errorGraph" id="errorAddEdge">Aqui va un error</p>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="cont-input">
+            <div>
+              <label for="removeV">Remove vertex:</label><br>
+              <div class="ptn-referencia-position">
+                <input id="removeV" placeholder="V" type="text">
+                <p class="errorGraph" id="errorRevomeV">Aqui va un error</p>
+                <button onclick="removeV()" class="btn-small-graph btn-width-small">-</button>
+              </div>
+            </div>
+
+            <div>
+              <label for="removeEdge">Remove edge:</label><br>
+              <div class="ptn-referencia-position">
+                <input id="removeEdge" placeholder="V1-V2" type="text">
+                <p class="errorGraph" id="errorRevomeEdge">Aqui va un error</p>
+                <button onclick="removeEdge()" class="btn-small-graph btn-width-small">-</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="cont-input">
+            <div>
+              <label for="addV">Exist vertex:</label><br>
+              <div class="ptn-referencia-position">
+                <input id="existV" placeholder="V" type="text">
+                <button onclick="existV()" class="btn-small-graph btn-width-small">?</button>
+                <p id="respuesta">Answer</p>
+              </div>
+            </div>
+
+            <div>
+              <label for="existEdge">Exist edge:</label><br>
+              <div class="ptn-referencia-position">
+                <input id="existEdge" placeholder="V1-V2" type="text">
+                <p class="errorGraph" id="ErrorexistEdge">Aqui va un error</p>
+                <button onclick="existEdge()" class="btn-small-graph btn-width-small">?</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!--Modales para la respuesta de los grafos-->
+        <div>
+          <div class="modal-box" id="mg-1">
+            <div class="window-Graph">
+              <button onclick="closeModal('mg-1'); showModal('m5-3'); closeAll()" class="closeX" style="right: 29.8%">X</button>
+              <h1 class="tittle-window-choose">Answer</h1>
+              <p class="showListGraph">Aqui va la respuesta</p>
+            </div>
+          </div>
+
+          <div class="modal-box" id="mg-2">
+            <div class="window-Graph">
+              <button onclick="closeModal('mg-2'); showModal('m5-3'); closeAll()" class="closeX" style="right: 29.8%">X</button>
+              <h1 class="tittle-window-choose">Answer</h1>
+              <p class="showListGraph">Aqui va la respuesta</p>
+            </div>
+          </div>
+
+          <div class="modal-box" id="mg-3">
+            <div class="window-Graph">
+              <button onclick="closeModal('mg-3'); showModal('m5-3'); closeAll()" class="closeX" style="right: 29.8%">X</button>
+              <h1 class="tittle-window-choose">Answer</h1>
+              <p class="showListGraph">Aqui va la respuesta</p>
+            </div>
+          </div>
+
+          <div class="modal-box" id="mg-4">
+            <div class="window-Graph">
+              <button onclick="closeModal('mg-4'); showModal('m5-3'); closeAll()" class="closeX" style="right: 29.8%">X</button>
+              <h1 class="tittle-window-choose" style="margin-top: 20px">Answer</h1>
+
+              <h2 style="margin-left: 30px; margin-bottom: 0" >Lista of vertex</h2>
+              <div id="listaVertex">
+                <ul id="ulListV"></ul>
+              </div>
+
+              <h2 style="margin-left: 30px">Lista of edge</h2>
+              <div id="listaEdges">
+                <ul id="ulListEdge"></ul>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -398,28 +617,99 @@
   <div>
     <div class="modal-box" id="m6-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m6-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m6-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m6-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m6-1');showModal('m6-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m6-1');showModal('m6-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m6-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
     <div class="modal-box" id="m6-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m6-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithm BFS</h1>
+        <pre>
+           graph = new Graph();
+
+           function bfs( nodeFirst){
+            var index = graph.arrVertex.indexOf(nodeFirst);
+
+            var arrFinal = [];
+            var cola = [];
+            var visitado = [];
+
+            for( var i = 0; i < (graph.arrVertex.length + 5); i++ ){
+                visitado[i] = false;
+            }
+
+            if( graph.existVertex(nodeFirst) ){
+                arrFinal.push(nodeFirst);
+                cola.push(index);
+                visitado[index] = true;
+
+                while ( cola.length > 0 ){
+                    var aux = cola.pop();
+
+                    for( let vecino of graph.arrEdge[aux]){
+
+                        if( !visitado[vecino]){
+                            visitado[vecino] = true;
+                            cola.push(vecino);
+
+                            arrFinal.push(graph.arrVertex[vecino]);
+                        }
+                    }
+                }
+            }
+            return arrFinal;
+        }
+
+      </pre>
+        <button onclick="closeModal('m6-2'); showModal('m6-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m6-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m6-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m6-3'); showModal('m6-1'); closeAllBFS()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm BFS</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToBFS" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToBFS" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addListVBFS()" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="errorInpBFS">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edges" style="font-size: 22px">Pair of edges:</label><br>
+          <input id="edges" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdgeBFS()" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="errorInpEdges" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListsBFS()" class="btn-show-list" style="width: 15%">Show lists</button>
+          <button onclick="bfsHTMLBFS()" class="btn-show-list" style="width: 10%;">BFS</button>
+          <div style="margin-left: 45px; display: inline">
+            <input id="nodeStrar" placeholder="node strat" required type="text" class="list-number-to-find" style="width: 8%;
+          padding: 17px">
+            <p class="smsError"id="errorNodeBFS" style="margin-left: 512px;" >Aqui va un error</p>
+          </div>
+        </div>
+
+        <div style="margin-top: -25px">
+          <p class="listAlgGraf" id="listV" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittleLEdges" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="listEdge" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdgesBFS" style="padding-left: 0">
+            </ul>
+          </div>
+
+          <p class="listAlgGraf" id="listBFS" style="margin: 20px 0 0 80px"></p>
+        </div>
+        <button onclick="closeAllBFS()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
@@ -427,28 +717,77 @@
   <div>
     <div class="modal-box" id="m7-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m7-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m7-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m7-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m7-1');showModal('m7-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m7-1');showModal('m7-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m7-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
     <div class="modal-box" id="m7-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m7-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithm DFS</h1>
+        <pre>
+          graph = new Graph();
+
+          function dfs( i, visitado, arr){
+            visitado[i] = true;
+            arr.push(graph.arrVertex[i]);
+
+            for( let vecino of graph.arrEdge[i] ){
+                if( !visitado[vecino] ){
+                    dfs(vecino,visitado,arr)
+                }
+            }
+            return arr;
+        }
+        </pre>
+        <button onclick="closeModal('m7-2'); showModal('m7-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m7-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m7-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m7-3'); showModal('m7-1'); closeAllDFS()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm DFS</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToDFS" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToDFS" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addListVDFS()" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="errorInpDFS">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edgesDFS" style="font-size: 22px">Pair of edges:</label><br>
+          <input id="edgesDFS" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdgeDFS()" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="errorInpEdgesDFS" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListsDFS()" class="btn-show-list" style="width: 15%">Show lists</button>
+          <button onclick="dfsHTMLDFS()" class="btn-show-list" style="width: 10%;">DFS</button>
+          <div style="margin-left: 45px; display: inline">
+            <input id="nodeStrarDFS" placeholder="node strat" required type="text" class="list-number-to-find" style="width: 8%;
+          padding: 17px">
+            <p class="smsError"id="errorNodeDFS" style="margin-left: 512px;" >Aqui va un error</p>
+          </div>
+        </div>
+
+        <div style="margin-top: -25px">
+          <p class="listAlgGraf" id="listVDFS" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittleLEdgesDFS" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="listEdgeDFS" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdgesDFS" style="padding-left: 0">
+            </ul>
+          </div>
+
+          <p class="listAlgGraf" id="listDFS" style="margin: 20px 0 0 80px"></p>
+        </div>
+        <button onclick="closeAllDFS()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
@@ -456,57 +795,209 @@
   <div>
     <div class="modal-box" id="m8-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m8-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m8-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m8-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m8-1');showModal('m8-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m8-1');showModal('m8-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m8-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
     <div class="modal-box" id="m8-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m8-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithm Floyd</h1>
+        <pre>
+          function init(){
+            for( var i = 0; i < matrix.length; i++){
+                for( var j = 0; j < matrix.length; j++){
+                    if( i === j ){
+                        matrix[ i ][ j ] = 0;
+                    }else{
+                        if(  matrix[i][j] === 0 ){
+                            matrix[ i ][ j ] = 99999999;
+                        }
+                    }
+                }
+            }
+            return matrix
+        }
+
+
+        function floyd() {
+            matrix = init();
+
+            for( var i = 0; i < matrix.length; i ++){
+                for( var j = 0; j < matrix.length; j++){
+                    for( var k = 0; k < matrix.length; k++){
+                        matrix[ i ][ j ] = Math.min( matrix[ i ][ j ], matrix[ i ][ k ] + matrix[ j ][ k ] );
+                    }
+                }
+            }
+            return matrix;
+        }
+        </pre>
+        <button onclick="closeModal('m8-2'); showModal('m8-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m8-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m8-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m8-3'); showModal('m8-1'); closeAllFloyd()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm Floyd</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToFloyd" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToFloyd" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addListVFloyd()" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="errorInpFloyd">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edgesFloyd" style="font-size: 22px">Edges:</label><br>
+          <input id="edgesFloyd" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdgeFloyd()" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="errorInpEdgesFloyd" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListsFloyd()" class="btn-show-list" style="width: 15%">Show lists</button>
+          <button onclick="FloydHTMLFloyd()" class="btn-show-list" style="width: 10%;">Floyd</button>
+        </div>
+
+        <div style="margin-top: 35px">
+          <p class="listAlgGraf" id="listVFloyd" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittleLEdgesFloyd" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="listEdgeFloyd" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdgesFloyd" style="padding-left: 0">
+            </ul>
+          </div>
+
+          <p class="listAlgGraf" id="listFloyd" style="margin: 20px 0 0 80px"></p>
+        </div>
+        <button onclick="closeAllFloyd()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
 
+
   <div>
     <div class="modal-box" id="m9-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m9-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m9-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m9-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m9-1');showModal('m9-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m9-1');showModal('m9-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m9-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
     <div class="modal-box" id="m9-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m9-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithm Djkstra</h1>
+        <pre>
+          graph = new Graph();
+
+          class PairDjkstra{
+
+            constructor( node, peso) {
+              this.node = node;
+              this.peso = peso;
+            }
+          }
+
+          function djkstra(inicio, fin) {
+            indexInicio = graph.arrVertex.indexOf(inicio);
+            indexFin = graph.arrVertex.indexOf(fin);
+
+            visitado = [];
+            arrDistancia = [];
+            pq = new PQ();
+
+
+            for( var i = 0; i < (graph.arrVertex.length + 5); i++ ){
+              visitado[i] = false;
+            }
+            for( var j = 0; j < (graph.arrVertex.length + 5); j++ ){
+              arrDistancia[j] = 999999;
+            }
+
+            visitado[indexInicio] = true;
+            arrDistancia[indexInicio] = 0;
+            pq.add( new PairDjkstra(indexInicio, 0) );
+
+            while ( pq.size > 0 ){
+              var aux = pq.extraer();
+              var nodo = aux.node;
+              var valor = aux.peso;
+
+              visitado[nodo] = true;
+
+              for (var i = 0; i < graph.arrEdge[nodo].length; i++) {
+                var pesoArista = graph.arrEdge[nodo][i].peso;
+                var nodoVecino = graph.arrEdge[nodo][i].node ;
+
+                if ( !visitado[nodoVecino] && ( valor + pesoArista ) < arrDistancia[nodoVecino] ) {
+                  arrDistancia[nodoVecino] = valor + pesoArista;
+                  pq.add(new PairPrim(graph.arrEdge[nodo][i].node, valor + pesoArista));
+                }
+              }
+            }
+
+            return arrDistancia[indexFin];
+
+          }
+        </pre>
+        <button onclick="closeModal('m9-2'); showModal('m9-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m9-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m9-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m9-3'); showModal('m9-1'); closeAllMet()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm Djkstra</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToDjkstra" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToDjkstra" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addList('listVertexToDjkstra', 'smsErrorDjkstra')" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="smsErrorDjkstra">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edgesDjkstra" style="font-size: 22px">Edges:</label><br>
+          <input id="edgesDjkstra" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdgesPeso('edgesDjkstra','smsErrorPairDjkstra')" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="smsErrorPairDjkstra" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListsEdgesPeso('listVDj','LEDj','tittleDj','ulLisEdgesDj')" class="btn-show-list" style="width: 10%">Show</button>
+          <button onclick="metHTMLNodeinicioANDfind('ansDJ','errorInicioDJ', 'errorFinDJ','nodeStratDJ','nodeEndDJ')"
+                  class="btn-show-list" style="width: 10%; margin-left: 5%">Djsktra</button>
+          <div style="display:inline; margin-left: 3%;  position: relative">
+            <input id="nodeStratDJ" placeholder="node strat" required type="text" class="list-number-to-find" style="width: 8%;padding: 17px">
+            <p class="smsError"id="errorInicioDJ" style="position: absolute; left: 5%; width: 100%" >Aqui va un error</p>
+          </div>
+          <div style="display:inline; margin-left: 3%;  position: relative">
+            <input id="nodeEndDJ" placeholder="node end" required type="text" class="list-number-to-find" style="width: 8%;padding: 17px">
+            <p class="smsError"id="errorFinDJ" style="position: absolute; left: 5%; width: 100%" >Aqui va un error</p>
+          </div>
+        </div>
+
+        <div style="margin-left: 20px; margin-top: 50px">
+          <p class="listAlgGraf" id="listVDj" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittleDj" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="LEDj" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdgesDj" style="padding-left: 0">
+            </ul>
+          </div>
+
+         <p class="listAlgGraf" id="ansDJ" style="margin: 20px 0 0 80px"></p>
+        </div>
+
+        <button onclick="closeAllMet()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
@@ -514,28 +1005,117 @@
   <div>
     <div class="modal-box" id="m10-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m10-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m10-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m10-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m10-1');showModal('m10-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m10-1');showModal('m10-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m10-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
     <div class="modal-box" id="m10-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m10-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithm Prim</h1>
+        <pre>
+          graph = new Graph();
+
+          class PairPrim{
+            constructor( node, peso) {
+              this.node = node;
+              this.peso = peso;
+            }
+          }
+
+          function prim(primerNodo) {
+            index = graph.arrVertex.indexOf(primerNodo);
+
+            visitado = [];
+            arr = [];
+            pq = new PQ();
+            var nodo = 0;
+            var valor = 0;
+
+            for( var i = 0; i < (graph.arrVertex.length + 5); i++ ){
+              visitado[i] = false;
+            }
+
+            visitado[index] = true;
+            arr.push(primerNodo);
+
+            if( graph.arrEdge[index].length === 0 ){
+              return primerNodo;
+            }else{
+              for( var i = 0; i < graph.arrEdge[index].length; i++ ){
+                nodo = graph.arrEdge[index][i].node;
+                valor = graph.arrEdge[index][i].peso;
+                pq.add( new PairPrim ( nodo, valor ) );
+              }
+
+              while( pq.size > 0 ) {
+                var aux = pq.extraer();
+                nodo = aux.node;
+                valor = aux.peso;
+
+                if ( !visitado[nodo] ) {
+                  visitado[nodo] = true;
+                  arr.push(graph.arrVertex[nodo]);
+                }
+
+                for (var i = 0; i < graph.arrEdge[nodo].length; i++) {
+                  if ( !visitado[graph.arrEdge[nodo][i].node] ) {
+                    pq.add(new PairPrim(graph.arrEdge[nodo][i].node, graph.arrEdge[nodo][i].peso));
+                  }
+                }
+              }
+              return arr;
+            }
+          }
+        </pre>
+        <button onclick="closeModal('m10-2'); showModal('m10-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m10-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m10-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m10-3'); showModal('m10-1'); closeAllMet()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm Prim</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToPrim" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToPrim" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addList('listVertexToPrim', 'smsErrorPrim')" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="smsErrorPrim">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edgesPrim" style="font-size: 22px">Edges:</label><br>
+          <input id="edgesPrim" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdgesPeso('edgesPrim','smsErrorPairPrim')" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="smsErrorPairPrim" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListsEdgesPeso('listVPrim','LEPrim','tittlePrim','ulLisEdgesPrim')" class="btn-show-list" style="width: 15%">Show lists</button>
+          <button onclick="metHTMLNodefirst('ansPrim','nodeStratPrim','errorPrim', prim)" class="btn-show-list" style="width: 10%;">Prim</button>
+          <div style="margin-left: 45px; display: inline">
+            <input id="nodeStratPrim" placeholder="node strat" required type="text" class="list-number-to-find" style="width: 8%;
+          padding: 17px">
+            <p class="smsError"id="errorPrim" style="margin-left: 512px;" >Aqui va un error</p>
+          </div>
+        </div>
+
+        <div style="margin-top: -25px">
+          <p class="listAlgGraf" id="listVPrim" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittlePrim" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="LEPrim" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdgesPrim" style="padding-left: 0">
+            </ul>
+          </div>
+
+          <p class="listAlgGraf" id="ansPrim" style="margin: 20px 0 0 80px"></p>
+        </div>
+        <button onclick="closeAllMet()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
@@ -543,28 +1123,135 @@
   <div>
     <div class="modal-box" id="m11-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m11-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m11-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m11-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m11-1');showModal('m11-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m11-1');showModal('m11-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m11-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
-    <div class="modal-box" id="m11-2">
+    <div class="modal-box" id="m11-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m11-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithm Kruskal</h1>
+        <pre>
+          graph = new Graph();
+
+          class Arista{
+
+            constructor( desde, hasta, peso) {
+                this.desde = desde;
+                this.hasta = hasta;
+                this.peso = peso;
+            }
+           }
+
+          class disJoinSet {
+
+              constructor( max ){
+                  this.parents = [ max ];
+                  this.rank = [ max ];
+                  this.max = max;
+                  this._init();
+              }
+
+              _init(){
+                  for( var i = 0; i < this.max; i++ ){
+                      this.parents[ i ] = i;
+                      this.rank[ i ] = 0;
+                  }
+              }
+
+              getParent( child ){
+                  return this.parents[ child ] === child ? child : this.getParent( this.parents[ child ] );
+              }
+
+
+              joinSets( desde, hasta ){
+                  desde = this.getParent( desde );
+                  hasta = this.getParent( hasta );
+
+                  if( desde !== hasta ){
+
+                      if( this.rank[ desde ] > this.rank [ hasta ] ){
+                          this.parents[ desde ] = this.parents[ hasta ];
+                      }else{
+                          this.parents[ hasta ] = this.parents[ desde ];
+
+                          if( this.rank[ desde ] === this.rank[ hasta ] ){
+                              this.rank[ desde ] ++;
+                          }
+                      }
+                      return true;
+                  }
+                  return false;
+              }
+          }
+
+          function kruskal(primerNodo) {
+              var cant = 0;
+
+              arrArista.sort( function (edge1, edge2 ) {
+                  if( edge1.peso > edge2.peso ) return 1;
+                  if( edge1.peso < edge2.peso ) return -1;
+                  return 0;
+              });
+
+              dj = new disJoinSet(100);
+
+              for( var i = 0; i < arrArista.length; i++ ){
+                  if(dj.joinSets(arrArista[i].desde,arrArista[i].hasta)){
+                      cant += arrArista[i].peso;
+                  }
+              }
+              return cant;
+          }
+        </pre>
+        <button onclick="closeModal('m11-2'); showModal('m11-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
-    <div class="modal-box" id="m11-3">
+    <div class="modal-box" id="m11-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m11-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m11-3'); showModal('m11-1'); closeAllMet()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm Kruskal</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToKruskal" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToKruskal" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addList('listVertexToKruskal', 'smsErrorKruskal')" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="smsErrorKruskal">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edgesKruskal" style="font-size: 22px">Edges:</label><br>
+          <input id="edgesKruskal" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdgesPesoKruskal('edgesKruskal','smsErrorPairKruskal')" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="smsErrorPairKruskal" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListsEdgesPesoKruskal('listVKruskal','LEKruskal','tittleKruskal','ulLisEdgesKruskal')" class="btn-show-list" style="width: 15%">Show lists</button>
+          <button onclick="metHTMLNodefirst('ansKruskal','nodeStratKruskal','errorKruskal',kruskal)" class="btn-show-list" style="width: 10%;">Kruskal</button>
+          <div style="margin-left: 45px; display: inline">
+            <input id="nodeStratKruskal" placeholder="node strat" required type="text" class="list-number-to-find" style="width: 8%;
+          padding: 17px">
+            <p class="smsError"id="errorKruskal" style="margin-left: 512px;" >Aqui va un error</p>
+          </div>
+        </div>
+
+        <div style="margin-top: -25px">
+          <p class="listAlgGraf" id="listVKruskal" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittleKruskal" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="LEKruskal" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdgesKruskal" style="padding-left: 0">
+            </ul>
+          </div>
+
+          <p class="listAlgGraf" id="ansKruskal" style="margin: 20px 0 0 80px"></p>
+        </div>
+        <button onclick="closeAllMet()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
@@ -572,57 +1259,202 @@
   <div>
     <div class="modal-box" id="m12-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m12-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m12-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m12-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m12-1');showModal('m12-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m12-1');showModal('m12-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m12-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
-    <div class="modal-box" id="m12-2">
+    <div class="modal-box" id="m12-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m12-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithm bipartide graph</h1>
+        <pre>
+          graph = new Graph();
+
+          function bipartide( nodeFirst){
+            let i;
+            index = graph.arrVertex.indexOf(nodeFirst);
+
+            bipart = [];
+            visitado = [];
+            cola = [];
+
+            for(i = 0; i < (graph.arrVertex.length + 5); i++ ){
+                visitado[i] = false;
+            }
+            for( var j = 0; j < (graph.arrVertex.length + 5); j++ ){
+                bipart[j] = -1;
+            }
+
+            bipart[index] = 1;
+            visitado[index] = true;
+            cola.push(index);
+
+            while ( cola.length > 0 ){
+                var aux = cola.pop();
+
+                for ( let vecino of graph.arrEdge[aux] ){
+                    if( !visitado[vecino] ){
+                        visitado[vecino] = true;
+                        cola.push(vecino);
+
+                        if( bipart[aux] === 1 ) {
+                            bipart[vecino] = 0;
+                        }else{
+                            bipart[vecino] = 1;
+                        }
+
+                    }else{
+                        if( bipart[vecino] === bipart[aux] ){
+                            return "Is not a bipartide graph";
+                        }
+                    }
+                }
+            }
+            return "Is a bipartide graph";
+        }
+
+        </pre>
+        <button onclick="closeModal('m12-2'); showModal('m12-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
-    <div class="modal-box" id="m12-3">
+    <div class="modal-box" id="m12-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m12-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m12-3'); showModal('m12-1'); closeAllMet()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm bipartide graph</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToBipartide" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToBipartide" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addList('listVertexToBipartide', 'smsErrorBipartide')" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="smsErrorBipartide">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edgesBipartide" style="font-size: 22px">Edges:</label><br>
+          <input id="edgesBipartide" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdges('edgesBipartide','smsErrorPairBipartide')" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="smsErrorPairBipartide" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListstEdgesSinPeso('listVBipartide','LEBipartide','tittleBipartide','ulLisEdgesBiparide')" class="btn-show-list" style="width: 15%">Show lists</button>
+          <button onclick="metHTMLNodefirst('anBipartide','nodeStratBipartide','errorBipartide', bipartide)" class="btn-show-list" style="width: 10%;">Bipartide</button>
+          <div style="margin-left: 45px; display: inline">
+            <input id="nodeStratBipartide" placeholder="node strat" required type="text" class="list-number-to-find" style="width: 8%;
+          padding: 17px">
+            <p class="smsError"id="errorBipartide" style="margin-left: 512px;" >Aqui va un error</p>
+          </div>
+        </div>
+
+        <div style="margin-top: -25px">
+          <p class="listAlgGraf" id="listVBipartide" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittleBipartide" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="LEBipartide" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdgesBiparide" style="padding-left: 0">
+            </ul>
+          </div>
+
+          <p class="listAlgGraf" id="anBipartide" style="margin: 20px 0 0 80px"></p>
+        </div>
+        <button onclick="closeAllMet()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
 
+
   <div>
     <div class="modal-box" id="m13-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m13-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m13-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m13-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m13-1');showModal('m13-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m13-1');showModal('m13-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m13-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
-    <div class="modal-box" id="m13-2">
+    <div class="modal-box" id="m13-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m13-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithm is loop graph</h1>
+        <pre>
+          graph = new Graph();
+
+          function isLoop(){
+            cicloVisitado = [];
+            cola = [];
+
+            for( var j = 0; j < (graph.arrVertex.length + 5); j++ ){
+                cicloVisitado[j] = -1;
+            }
+            cola.push(0);
+            cicloVisitado[0] = -2;
+
+            while ( cola.length > 0 ) {
+                var aux = cola.pop();
+
+                for ( let vecino of graph.arrEdge[aux] ){
+                    if( cicloVisitado[aux] === vecino ){
+                        continue
+                    }
+
+                    if ( cicloVisitado[vecino] === -1) {
+                        cicloVisitado[vecino] = aux;
+                        cola.push(vecino);
+                    }else{
+                        return "Is a loop graph"
+                    }
+                }
+            }
+            return "Is not a loop graph"
+        }
+
+        </pre>
+        <button onclick="closeModal('m13-2'); showModal('m13-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
-    <div class="modal-box" id="m13-3">
+    <div class="modal-box" id="m13-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m13-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m13-3'); showModal('m13-1'); closeAllMet()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm is loop graph</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToIsLoop" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToIsLoop" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addList('listVertexToIsLoop', 'smsErrorLoop')" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="smsErrorLoop">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edgesLoop" style="font-size: 22px">Edges:</label><br>
+          <input id="edgesLoop" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdges('edgesLoop','smsErrorPairLoop')" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="smsErrorPairLoop" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListstEdgesSinPeso('listVLoop','LELoop','tittlLoop','ulLisEdgesLoop')" class="btn-show-list" style="width: 15%">Show lists</button>
+          <button onclick="metHTMLonlyButtom('ansLoop','errorLoop', isLoop)" class="btn-show-list" style="width: 10%;">Is loop</button>
+          <p class="smsError"id="errorLoop" style="margin-left: 330px;" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -25px">
+          <p class="listAlgGraf" id="listVLoop" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittlLoop" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="LELoop" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdgesLoop" style="padding-left: 0">
+            </ul>
+          </div>
+
+          <p class="listAlgGraf" id="ansLoop" style="margin: 20px 0 0 80px"></p>
+        </div>
+        <button onclick="closeAllMet()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
@@ -630,28 +1462,76 @@
   <div>
     <div class="modal-box" id="m14-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m14-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m14-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m14-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m14-1');showModal('m14-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m14-1');showModal('m14-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m14-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
-    <div class="modal-box" id="m14-2">
+    <div class="modal-box" id="m14-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m14-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithm regular graph</h1>
+        <pre>
+          graph = new Graph();
+
+          function regularGraph(){
+            var posibleGrado = grado( graph.arrVertex[0] );
+
+            for( var i = 1; i < graph.arrVertex.length; i++ ){
+                if( grado(i) !== posibleGrado ){
+                    return "Is not a regular graph";
+                }
+            }
+            return "Is a regular graph";
+        }
+
+        function grado(nodo) {
+            return graph.arrEdge[nodo].length;
+        }
+        </pre>
+        <button onclick="closeModal('m14-2'); showModal('m14-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
-    <div class="modal-box" id="m14-3">
+    <div class="modal-box" id="m14-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m14-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m14-3'); showModal('m14-1'); closeAllMet()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm regular graph</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToRegullar" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToRegullar" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addList('listVertexToRegullar', 'smsErrorRegular')" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="smsErrorRegular">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edgesRegukar" style="font-size: 22px">Edges:</label><br>
+          <input id="edgesRegukar" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdges('edgesRegukar','smsErrorPairRegular')" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="smsErrorPairRegular" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListstEdgesSinPeso('listVRegular','LERegular','tittlRegular','ulLisEdgesRegular')" class="btn-show-list" style="width: 15%">Show lists</button>
+          <button onclick="metHTMLonlyButtom('ansReglar','errorRegular', regularGraph)" class="btn-show-list" style="width: 10%;">Regular</button>
+          <p class="smsError"id="errorRegular" style="margin-left: 330px;" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -25px">
+          <p class="listAlgGraf" id="listVRegular" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittlRegular" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="LERegular" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdgesRegular" style="padding-left: 0">
+            </ul>
+          </div>
+
+          <p class="listAlgGraf" id="ansReglar" style="margin: 20px 0 0 80px"></p>
+        </div>
+        <button onclick="closeAllMet()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
@@ -659,28 +1539,95 @@
   <div>
     <div class="modal-box" id="m15-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m15-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m15-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m15-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m15-1');showModal('m15-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m15-1');showModal('m15-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m15-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
-    <div class="modal-box" id="m15-2">
+    <div class="modal-box" id="m15-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m15-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithm is a connected graph</h1>
+        <pre>
+          graph = new Graph();
+
+          function isAConnectedGraph() {
+            cont = 1;
+            visitado = [];
+            cola = [];
+
+            for( var j = 0; j < (graph.arrVertex.length + 5); j++ ){
+              visitado[j] = false;
+            }
+
+            cola.push(0);
+            visitado[0] = true;
+
+            while ( cola.length > 0 ){
+              var aux = cola.pop();
+
+              for( let vecino of graph.arrEdge[aux] ){
+
+                if( !visitado[vecino] ){
+                  visitado[vecino] = true;
+                  cola.push(vecino);
+                  cont++;
+                }
+              }
+            }
+
+            if( cont === graph.arrVertex.length ){
+              return "Is a connected graph";
+            }else{
+              return "Is not a connected graph";
+
+            }
+
+          }
+        </pre>
+        <button onclick="closeModal('m15-2'); showModal('m15-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
-    <div class="modal-box" id="m15-3">
+    <div class="modal-box" id="m15-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m15-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m15-3'); showModal('m15-1'); closeAllMet()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm is a connected graph</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToIsConnected" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToIsConnected" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addList('listVertexToIsConnected', 'smsErrorIsConnected')" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="smsErrorIsConnected">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edgesIsConnected" style="font-size: 22px">Edges:</label><br>
+          <input id="edgesIsConnected" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdges('edgesIsConnected','smsErrorPairIsConnected')" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="smsErrorPairIsConnected" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListstEdgesSinPeso('listVIsConnected','LEIsConnected','tittleIsConnected','ulLisEdgesIsConnected')" class="btn-show-list" style="width: 15%">Show lists</button>
+          <button onclick="metHTMLonlyButtom('ansIsConnected','errorIsConneted', isAConnectedGraph )" class="btn-show-list" style="width: 15%;">is connected</button>
+          <p class="smsError"id="errorIsConneted" style="margin-left: 350px;" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -25px">
+          <p class="listAlgGraf" id="listVIsConnected" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittleIsConnected" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="LEIsConnected" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdgesIsConnected" style="padding-left: 0">
+            </ul>
+          </div>
+
+          <p class="listAlgGraf" id="ansIsConnected" style="margin: 20px 0 0 80px"></p>
+        </div>
+        <button onclick="closeAllMet()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
@@ -688,148 +1635,398 @@
   <div>
     <div class="modal-box" id="m16-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m16-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m16-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m16-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m16-1');showModal('m16-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m16-1');showModal('m16-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m16-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
-    <div class="modal-box" id="m16-2">
+    <div class="modal-box" id="m16-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m16-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Algorithm connnected components</h1>
+        <pre>
+          graph = new Graph();
+
+          function connectedComponents(){
+
+            var visitado = [];
+            var cant = 0;
+
+            for( var j = 0; j < (graph.arrVertex.length + 5); j++ ){
+                visitado[j] = false;
+            }
+
+            for( var i = 0; i < graph.arrVertex.length; i++ ){
+                if( !visitado[i] ){
+                    cant ++;
+                    visitado = bfs(i, visitado);
+                }
+            }
+            return cant;
+        }
+
+        function bfs( node, visitado) {
+            cola = [];
+
+            cola.push(node);
+            visitado[node] = true;
+
+            while( cola.length > 0 ){
+                var aux = cola.pop();
+
+                for( let vecino of graph.arrEdge[aux] ){
+                    if( !visitado[vecino] ){
+                        visitado[vecino] = true;
+
+                        cola.push(vecino);
+                    }
+                }
+            }
+            return visitado;
+        }
+        </pre>
+        <button onclick="closeModal('m16-2'); showModal('m16-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
     <div class="modal-box" id="m16-3">
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m16-3')" class="btn-window c-diff">Cancel</button>
+        <button onclick="closeModal('m16-3'); showModal('m16-1'); closeAllMet()" class="closeX">X</button>
+
+        <h1 class="tittle-code">Algorithm connnected components</h1>
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexToCC" style="font-size: 22px">Enter the list of numbers sepate for white sapace: </label><br>
+          <input id="listVertexToCC" placeholder="numbers" type="text" class="list-number" required>
+          <button onclick="addList('listVertexToCC', 'smsErrorCC')" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="smsErrorCC">Aqui va un error para la input</p>
+        </div>
+
+        <div style="float: right; margin-top: -20px" class="ptn-referencia-position">
+          <label for="edgesCC" style="font-size: 22px">Edges:</label><br>
+          <input id="edgesCC" placeholder="element" required type="text" class="list-number-to-find">
+          <button onclick="addEdges('edgesCC','smsErrorPairCC')" class="btn-small-graph btn-width-small diffPairV">+</button>
+          <p class="smsError"id="smsErrorPairCC" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -20px">
+          <button onclick="showListstEdgesSinPeso('listVCC','LECC','tittlCCr','ulLisEdgesCC')" class="btn-show-list" style="width: 15%">Show lists</button>
+          <button onclick="metHTMLonlyButtom('ansCC','errorCC', connectedComponents)" class="btn-show-list" style="width: 20%;">Conneted comp</button>
+          <p class="smsError"id="errorCC" style="margin-left: 370px;" >Aqui va un error</p>
+        </div>
+
+        <div style="margin-top: -25px">
+          <p class="listAlgGraf" id="listVCC" style="margin: 20px 0 0 80px"></p>
+          <h2 id = "tittlCCr" style="display: none; margin-left: 80px">List of edges:</h2>
+          <div class="listAlgGraf" id="LECC" style="margin: 20px 0 0 80px">
+            <ul id="ulLisEdgesCC" style="padding-left: 0">
+            </ul>
+          </div>
+
+          <p class="listAlgGraf" id="ansCC" style="margin: 20px 0 0 80px"></p>
+        </div>
+        <button onclick="closeAllMet()" class="btn-window c-diff float-back" >Clean all</button>
       </div>
     </div>
   </div>
 
+
   <div>
     <div class="modal-box" id="m17-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m17-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m17-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m17-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m17-1');showModal('m17-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m17-1');showModal('m17-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m17-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
-    <div class="modal-box" id="m17-2">
+    <div class="modal-box" id="m17-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m17-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Criba of Eratóstenes</h1>
+        <pre>
+          function criba(max) {
+            var arr = [];
+
+            for( var i = 0; i < parseInt(max + 5); i++ ){
+              arr[i] = true;
+            }
+
+            arr[0] = false;
+            arr[1] = false;
+
+            for(  i = 4; i < arr.length; i += 2 ) {
+              arr[i] = false;
+            }
+
+            for(  i = 3; i < parseInt(Math.sqrt((arr.length) + 1 ) ); i += 2 ) {
+              if( arr[i] ) {
+                for (j = i * i; j < arr.length; j *= 2) {
+                  if (j % i === 0) {
+                    arr[j] = false;
+                  }
+                }
+              }
+            }
+
+            var arrResult = [];
+
+            for( i = 0; i < max; i++ ){
+              if( arr[i] === true ){
+                arrResult.push(i);
+              }
+            }
+
+            if( arrResult.length > 0 ){
+              return arrResult;
+            }else{
+              return "There are not primes numbers"
+            }
+          }
+
+        </pre>
+        <button onclick="closeModal('m17-2'); showModal('m17-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
-    <div class="modal-box" id="m17-3">
+    <div class="modal-box" id="m17-3"  >
       <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m17-3')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Criba of Eratóstenes</h1>
+
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexCriba" style="font-size: 22px">Max number: </label><br>
+          <input id="listVertexCriba" placeholder="number" type="text" class="list-number" required>
+          <button onclick="addNumberMax('listVertexCriba', 'smsErrorCriba')" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="smsErrorCriba">Aqui va un error para la input</p>
+        </div>
+
+
+        <button onclick="showMetPrimeNumber('answerCriba', 'errorShowListaCriba', criba)" class="btn-show-list">Show primes numbers</button>
+        <p class="smsError" id="errorShowListaCriba" style="width: 45%; margin-left: 120px">Aqui va un error</p><br>
+        <p class="showList" id="answerCriba" style="width: 45%">Aqui va la lista</p>
+
+        <div>
+          <button onclick="closeAllMet()" class="btn-window c-diff float-back" style="left: 60%">Clean all</button>
+          <button onclick="closeModal('m17-3'); showModal('m17-1'); closeAllMet()" class="btn-window c-diff float-back">Get back</button>
+        </div>
       </div>
     </div>
+
   </div>
 
   <div>
     <div class="modal-box" id="m18-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m18-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m18-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m18-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m18-1');showModal('m18-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m18-1');showModal('m18-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m18-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
-    <div class="modal-box" id="m18-2">
+    <div class="modal-box" id="m18-2"  >
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m18-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Prime factors</h1>
+        <pre>
+          myCriba =  criba(9999999);
+
+          function primesFactors(numero) {
+            var arr_factores_primos = [];
+
+            var indice_numero_primo = 0 ;
+            var numero_primo = myCriba[indice_numero_primo];
+
+            while( numero_primo * numero_primo <= numero ){
+              while( numero % numero_primo === 0 ){
+                arr_factores_primos.push(numero_primo);
+                numero = numero / numero_primo;
+              }
+
+              indice_numero_primo += 1;
+              numero_primo = myCriba[indice_numero_primo];
+            }
+
+
+            if( numero > 1 ){
+              arr_factores_primos.push(numero);
+            }
+
+            return arr_factores_primos;
+
+          }
+        </pre>
+        <button onclick="closeModal('m18-2'); showModal('m18-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
-    <div class="modal-box" id="m18-3">
-      <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m18-3')" class="btn-window c-diff">Cancel</button>
+    <div class="modal-box" id="m18-3"  >
+      <div class="window-code"><h1 class="tittle-code">Prime factors</h1>
+
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="NumberFPrime" style="font-size: 22px">Number to find the prime factors: </label><br>
+          <input id="NumberFPrime" placeholder="number" type="text" class="list-number" required>
+          <button onclick="addNumberMax('NumberFPrime', 'smsErrorFPrime')" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="smsErrorFPrime">Aqui va un error para la input</p>
+        </div>
+
+
+        <button onclick="showMetPrimeNumber('answerFPrime', 'errorShowListaFPrima', primesFactors)" class="btn-show-list">Show primes numbers</button>
+        <p class="smsError" id="errorShowListaFPrima" style="width: 45%; margin-left: 120px">Aqui va un error</p>
+        <p class="showList" id="answerFPrime" style="width: 45%">Aqui va la lista</p>
+
+        <div>
+          <button onclick="closeAllMet()" class="btn-window c-diff float-back" style="left: 60%">Clean all</button>
+          <button onclick="closeModal('m18-3'); showModal('m18-1'); closeAllMet()" class="btn-window c-diff float-back">Get back</button>
+        </div>
       </div>
     </div>
+
   </div>
 
   <div>
     <div class="modal-box" id="m19-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m19-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m19-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m19-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m19-1');showModal('m19-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m19-1');showModal('m19-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m19-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
     <div class="modal-box" id="m19-2">
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m19-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Sum of divisors</h1>
+        <pre>
+          myCriba =  criba(9999999);
+
+          function sumDivisors(numero) {
+            var sum = 0;
+            var indice = 0;
+            var primo = myCriba[indice];
+
+            while( primo * primo <= numero ){
+              while( numero % primo === 0 ){
+                sum += primo;
+                numero = numero / primo  ;
+              }
+              indice += 1;
+              primo = myCriba[indice];
+            }
+
+            if (numero > 1) {
+              sum += numero;
+            }
+
+            return sum;
+          }
+        </pre>
+        <button onclick="closeModal('m19-2'); showModal('m19-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
-    <div class="modal-box" id="m19-3">
-      <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m19-3')" class="btn-window c-diff">Cancel</button>
+    <div class="modal-box" id="m19-3"  >
+      <div class="window-code"><h1 class="tittle-code">Sum of divisor</h1>
+
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexSumD" style="font-size: 22px">Number to find its sum of divisors: </label><br>
+          <input id="listVertexSumD" placeholder="number" type="text" class="list-number" required>
+          <button onclick="addNumberMax('listVertexSumD', 'smsErrorSumD')" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="smsErrorSumD">Aqui va un error para la input</p>
+        </div>
+
+
+        <button onclick="showMetPrimeNumber('answerSumD', 'errorShowListaSumD', sumDivisors)" class="btn-show-list">Show sumDisors</button>
+        <p class="smsError" id="errorShowListaSumD" style="width: 45%; margin-left: 120px">Aqui va un error</p>
+        <p class="showList" id="answerSumD" style="width: 45%">Aqui va la lista</p>
+
+        <div>
+          <button onclick="closeAllMet()" class="btn-window c-diff float-back" style="left: 60%">Clean all</button>
+          <button onclick="closeModal('m19-3'); showModal('m19-1'); closeAllMet()" class="btn-window c-diff float-back">Get back</button>
+        </div>
       </div>
     </div>
+
   </div>
 
   <div>
     <div class="modal-box" id="m20-1">
       <div class="window">
-        <div style="text-align: center; padding-top: 20px; color: #2c594a">
-          <h1 style="font-family: Arial; font-size: 35px">Choose the desired option</h1>
-          <div style="display: flex; justify-content: space-evenly; margin-top: 40px;flex-wrap: wrap">
-            <button onclick="showModal('m20-2')" class="btn-window">Show code</button>
-            <button onclick="showModal('m20-3')" class="btn-window">Test code</button>
-            <button onclick="closeModal('m20-1')" class="btn-window c-diff">Cancel</button>
-          </div>
+        <h1 class="tittle-window-choose">Choose the desired option</h1>
+        <div class="contened-btn-menu-choose">
+          <button onclick="closeModal('m20-1');showModal('m20-2')" class="btn-window">Show code</button>
+          <button onclick="closeModal('m20-1');showModal('m20-3')" class="btn-window">Test code</button>
+          <button onclick="closeModal('m20-1')" class="btn-window c-diff">Cancel</button>
         </div>
       </div>
     </div>
 
     <div class="modal-box" id="m20-2">
       <div class="window-code">
-        <h1>Este es el boton 1 show code</h1>
-        <button onclick="closeModal('m20-2')" class="btn-window c-diff">Cancel</button>
+        <h1 class="tittle-code">Cant of divisors</h1>
+        <pre>
+          function cantDiv(numero) {
+            var cant = 0;
+            var indice = 0;
+            var primo = myCriba[indice];
+
+            while( primo * primo <= numero ){
+              while( numero % primo === 0 ){
+                cant += 1;
+                numero = numero / primo  ;
+              }
+              indice += 1;
+              primo = myCriba[indice];
+            }
+
+            if (numero > 1) {
+              cant += 1;
+            }
+
+            return cant;
+          }
+        </pre>
+        <button onclick="closeModal('m19-2'); showModal('m19-1')" class="btn-window c-diff float-back">Get back</button>
       </div>
     </div>
 
-    <div class="modal-box" id="m20-3">
-      <div class="window-code">
-        <h1>Este es el boton 1 test</h1>
-        <button onclick="closeModal('m20-3')" class="btn-window c-diff">Cancel</button>
+    <div class="modal-box" id="m20-3"  >
+      <div class="window-code"><h1 class="tittle-code">Cant of divisor</h1>
+
+        <div class="ptn-referencia-position" style="margin-top: 50px; margin-left: 80px">
+          <label for="listVertexConutD" style="font-size: 22px">Number to find its cont of divisors: </label><br>
+          <input id="listVertexConutD" placeholder="number" type="text" class="list-number" required>
+          <button onclick="addNumberMax('listVertexConutD', 'smsErrorContD')" class="btn-small-graph btn-width-small diffListVinp">+</button>
+          <p class="smsError" id="smsErrorContD">Aqui va un error para la input</p>
+        </div>
+
+
+        <button onclick="showMetPrimeNumber('answerCantD', 'errorShowListaCantD', cantDivisors)" class="btn-show-list">Show Cant Disors</button>
+        <p class="smsError" id="errorShowListaCantD" style="width: 45%; margin-left: 120px">Aqui va un error</p>
+        <p class="showList" id="answerCantD" style="width: 45%">Aqui va la lista</p>
+
+        <div>
+          <button onclick="closeAllMet()" class="btn-window c-diff float-back" style="left: 60%">Clean all</button>
+          <button onclick="closeModal('m20-3'); showModal('m20-1'); closeAllMet()" class="btn-window c-diff float-back">Get back</button>
+        </div>
       </div>
     </div>
+
   </div>
 
+
+
+
+
+
+  <!--end modals-->
 
   <h1 id="tittle">Algorithms in javascript</h1>
 
@@ -856,24 +2053,40 @@
       <ul>
         <li><button onclick="showModal('m13-1')" class="btn-form c-fourteen">Is loop</button></li>
         <li><button onclick="showModal('m14-1')" class="btn-form c-fifteen">RegularGraph</button></li>
-        <li><button onclick="showModal('m15-1')" class="btn-form c-sixteen">C conneted</button></li>
-        <li><button onclick="showModal('m16-1')" class="btn-form c-seventeen">Segment tree</button></li>
+        <li><button onclick="showModal('m15-1')" class="btn-form c-sixteen">isConneted</button></li>
+        <li><button onclick="showModal('m16-1')" class="btn-form c-seventeen">conneted-c</button></li>
       </ul>
       <ul>
-        <li><button onclick="showModal('m17-1')" class="btn-form c-eigthteen">lazy propag...</button></li>
-        <li><button onclick="showModal('m18-1')" class="btn-form c-nineteen">La criba</button></li>
-        <li><button onclick="showModal('m19-1')" class="btn-form c-twenty">Prime factors</button></li>
-        <li><button onclick="showModal('m20-1')" class="btn-form c-twenty-two">+ of divisors</button></li>
+        <li><button onclick="showModal('m17-1')" class="btn-form c-eigthteen">La criba</button></li>
+        <li><button onclick="showModal('m18-1')" class="btn-form c-nineteen">Prime factors</button></li>
+        <li><button onclick="showModal('m19-1')" class="btn-form c-twenty" style="background-color: lightblue">+ of divisors</button></li>
+        <li><button onclick="showModal('m20-1')" class="btn-form c-twenty">cant-divisors</button></li>
       </ul>
     </div>
 
   </main>
 
+  <script type="text/javascript" src="algoritmos/col2/graph.js"></script>
   <script type="text/javascript" src="algoritmos/modals.js"></script>
   <script type="text/javascript" src="algoritmos/col1/heapSort.js"></script>
   <script type="text/javascript" src="algoritmos/col1/mergeSort.js"></script>
   <script type="text/javascript" src="algoritmos/col1/binarySearch.js"></script>
   <script type="text/javascript" src="algoritmos/col1/priorityQueue.js"></script>
+  <script type="text/javascript" src="algoritmos/col2/bfs.js"></script>
+  <script type="text/javascript" src="algoritmos/col2/dfs.js"></script>
+  <script type="text/javascript" src="algoritmos/col2/floyd.js"></script>
+  <script type="text/javascript" src="algoritmos/col3/kruskal.js"></script>
+  <script type="text/javascript" src="algoritmos/col3/prim.js"></script>
+  <script type="text/javascript" src="algoritmos/col3/bipartide.js"></script>
+  <script type="text/javascript" src="algoritmos/col3/djkstra.js"></script>
+  <script type="text/javascript" src="algoritmos/col4/connected-c.js"></script>
+  <script type="text/javascript" src="algoritmos/col4/isConnected.js"></script>
+  <script type="text/javascript" src="algoritmos/col4/isLoop.js"></script>
+  <script type="text/javascript" src="algoritmos/col4/regularGraph.js"></script>
+  <script type="text/javascript" src="algoritmos/col5/criba.js"></script>
+  <script type="text/javascript" src="algoritmos/col5/cantDivisor.js"></script>
+  <script type="text/javascript" src="algoritmos/col5/primeFact.js"></script>
+  <script type="text/javascript" src="algoritmos/col5/sumDiv.js"></script>
 
 </body>
 </html>
