@@ -158,7 +158,8 @@ button.c-one{
     border-radius: 8px;
     width: 88%;
     height: 85%;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: auto;
     margin: auto auto;
 }
 
@@ -172,7 +173,6 @@ button.c-one{
     height: 300px;
     margin: auto auto;
     margin-top: 140px;
-
 }
 
 h1.tittle-window-choose{
@@ -286,26 +286,27 @@ input.list-number{
 }
 
 p.smsError{
-color:  var(--dark-error-red);
+    color:  var(--dark-error-red);
     font-size: 18px;
     visibility: hidden;
 }
 
 p#smsErrorAdd{
-color:  var(--dark-error-red);
+    color:  var(--dark-error-red);
     font-size: 18px;
     visibility: hidden;
 }p#smsErrorBinary{
-color:  var(--dark-error-red);
+    color:  var(--dark-error-red);
     font-size: 18px;
     visibility: hidden;
 }
 
 p.showList{
     margin-top: 70px;
-    margin-left: 130px;
+    margin-left: 90px;
     font-size: 24px;
     visibility: hidden;
+    line-height: 25px;
 }
 p#extraerPQ{
     margin-left: 15px;
@@ -449,7 +450,6 @@ button.btn-small-graph{
     padding: 10px 18px;
     border-radius: 5px;
     top: 0;
-    right: 0;
     font-size: 22px;
     outline: none;
 
@@ -478,6 +478,8 @@ div.window-Graph{
     margin: auto auto;
     margin-top: 120px;
     overflow-y: auto;
+    overflow-x: auto;
+
 }
 
 p.showListGraph{
@@ -516,6 +518,7 @@ button.diffListVinp{
     left: 89.4%;
     top: 24.5%;
     height: 45.5%;
+    color: white;
     background-color: var(--dark-green);
 }
 
@@ -527,6 +530,7 @@ button.diffPairV{
     left: 57.5%;
     top: 18.5%;
     height: 41.5%;
+    color: white;
     background-color: var(--dark-green);
 }
 button.diffPairV:hover{

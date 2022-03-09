@@ -1,23 +1,99 @@
+class Pair{
+    constructor( node, peso) {
+        this.node = node;
+        this.peso = peso;
+    }
+}
 
 graph = new Graph();
+matrix =  [];
 
-function floyd( nodeFirst){
+function existEdgeFloyd(v1,v2) {
+    var indexV1 = graph.arrVertex.indexOf(v1);
+    var indexV2 = graph.arrVertex.indexOf(v2);
 
+    var exist = false;
+    if (graph.existVertex(v1) && graph.existVertex(v2)) {
+        for( var i = 0; i < graph.arrEdge[indexV1].length; i ++){
+            if( graph.arrEdge[indexV1].length > 0 ){
+                if( graph.arrEdge[indexV1][i].node === indexV2 ){
+                    return true;
+                }
+            }
+        }
+        for( var j = 0; j < graph.arrEdge[indexV2].length; j ++){
+            if( graph.arrEdge[indexV2].length > 0 ){
+                if( graph.arrEdge[indexV2][j].node === indexV1 ) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+function  addVertextPair(v){
+    if (!graph.existVertex(v)) {
+        graph.arrVertex.push(v);
+        graph.arrEdge.push([]);
+        matrix.push([]);
+    }
+}
+
+function  addEdgePair(v1, v2, peso) {
+    var indexV1 = graph.arrVertex.indexOf(v1);
+    var indexV2 = graph.arrVertex.indexOf(v2);
+
+    if (graph.existVertex(v1) && graph.existVertex(v2)) {
+        matrix[indexV2][indexV1] = peso;
+        matrix[indexV1][indexV2] = peso;
+        graph.arrEdge[indexV1].push(new Pair(indexV2, peso));
+        graph.arrEdge[indexV2].push(new Pair(indexV1, peso));
+    }
+}
+
+function init(){
+    for( var i = 0; i < matrix.length; i++){
+        for( var j = 0; j < matrix.length; j++){
+            if( i === j ){
+                matrix[ i ][ j ] = 0;
+            }else{
+                if(  matrix[i][j] === 0 ){
+                    matrix[ i ][ j ] = 99999999;
+                }
+            }
+        }
+    }
+    return matrix
+}
+
+
+function floyd() {
+    matrix = init();
+
+    for( var i = 0; i < matrix.length; i ++){
+        for( var j = 0; j < matrix.length; j++){
+            for( var k = 0; k < matrix.length; k++){
+                matrix[ i ][ j ] = parseInt(Math.min( matrix[ i ][ j ], matrix[ i ][ k ] + matrix[ j ][ k ] ));
+            }
+        }
+    }
+    return matrix;
 }
 
 
 /*funciones para el fronten*/
-
 function addListVFloyd() {
     closeSmsErrorFloyd();
-    inpListV = document.getElementById("listVertexToFloyd");
-    errorInpListV = document.getElementById("errorInpFloyd");
+    inpLVDFS = document.getElementById("listVertexToFloyd");
+    errorFloyd = document.getElementById("errorInpFloyd");
 
-    var arrListV = inpListV.value;
+    var arrListV =inpLVDFS.value;
 
     if( arrListV === "" ){
-        errorInpListV.innerText = "Empty entry is not allowed";
-        errorInpListV.style.visibility = "visible";
+       errorFloyd.innerText = "Empty entry is not allowed";
+       errorFloyd.style.visibility = "visible";
+       errorFloyd.style.color = "#910504";
     }else{
         arrListV = arrListV.trim();
         if( arrListV.includes(" ") ){
@@ -38,83 +114,91 @@ function addListVFloyd() {
         }
 
         for( var j = 0; j < arrListV.length;j++ ){
-            graph.addVertext( arrListV[j] );
+            addVertextPair( arrListV[j] );
         }
-        errorInpListV.innerText = "The list of vertexes has be added successfully";
-        errorInpListV.style.visibility = "visible";
-        errorInpListV.style.color = "green";
+       errorFloyd.innerText = "The list of vertexes has be added successfully";
+       errorFloyd.style.visibility = "visible";
+       errorFloyd.style.color = "green";
     }
-    inpListV.value = "";
+   inpLVDFS.value = "";
 
 }
 
 function addEdgeFloyd() {
     closeSmsErrorFloyd();
-    inpPairV = document.getElementById("edgesFloyd");
-    smsErrrPair = document.getElementById("errorInpEdgesFloyd");
-    var arrV = inpPairV.value;
+    inpPairFloyd = document.getElementById("edgesFloyd");
+    errorPairFloyd = document.getElementById("errorInpEdgesFloyd");
+    var arrVFloyd =inpPairFloyd.value;
 
-    if( arrV === "" ){
-        smsErrrPair.innerText = "Empty entry is not allowed";
-        smsErrrPair.style.color = "#910504";
-        smsErrrPair.style.visibility = "visible";
+    if( arrVFloyd === "" ){
+        errorPairFloyd.innerText = "Empty entry is not allowed";
+        errorPairFloyd.style.color = "#910504";
+        errorPairFloyd.style.visibility = "visible";
     }else{
-        arrV = arrV.trim();
-        if( arrV.includes(" ") ){
-            arrV = arrV.split(" ");
+        arrVFloyd = arrVFloyd.trim();
+        if( arrVFloyd.includes(" ") ){
+            arrVFloyd = arrVFloyd.split(" ");
         }
-        if( arrV.includes(",") ){
-            arrV = arrV.split(",");
+        if( arrVFloyd.includes(",") ){
+            arrVFloyd = arrVFloyd.split(",");
         }
 
-        for( var i = 0; i < arrV.length;i++ ){
-            if( arrV[i] === "," ){
-                arrV.splice(i, 1);
+        for( var i = 0; i < arrVFloyd.length;i++ ){
+            if( arrVFloyd[i] === "," ){
+                arrVFloyd.splice(i, 1);
             }
-            if( arrV[i] === "" ){
-                arrV.splice(i, 1);
+            if( arrVFloyd[i] === "" ){
+                arrVFloyd.splice(i, 1);
                 i -= 1;
             }
         }
+        if( arrVFloyd.length === 3 ){
+            var v1 = arrVFloyd[0];
+            var v2 = arrVFloyd[1];
+            var peso = arrVFloyd[2];
 
-        if( arrV.length === 2 ){
-            var v1 = arrV[0];
-            var v2 = arrV[1];
-
-            if( graph.existVertex( v1 ) && graph.existVertex( v2 ) ) {
-                if( graph.existEdge( v1, v2 ) ){
-                    smsErrrPair.innerText = "The edge already exist";
-                    smsErrrPair.style.color = "#910504";
-                    smsErrrPair.style.visibility = "visible";
-                }else{
-                    graph.addEdge( v1, v2 );
-                    smsErrrPair.innerText = "Has been added successfully";
-                    smsErrrPair.style.visibility = "visible";
-                    smsErrrPair.style.color = "green";
-                }
-            }else{
-                if (!graph.existVertex(v1) && !graph.existVertex(v2)) {
-                    smsErrrPair.innerText = "The vertexes isn't found";
-                    smsErrrPair.style.visibility = "visible";
-                    smsErrrPair.style.color = "#910504";
-                }else{
-                    if (!graph.existVertex(v1)) {
-                        smsErrrPair.innerText = "The first vertex isn't found";
-                        smsErrrPair.style.visibility = "visible";
-                        smsErrrPair.style.color = "#910504";
+            if( !isNaN(peso) ){
+                peso = Number(peso);
+                if( graph.existVertex( v1 ) && graph.existVertex( v2 ) ) {
+                    if( existEdgeFloyd( v1, v2 ) ){
+                        errorPairFloyd.innerText = "The edge already exist";
+                        errorPairFloyd.style.color = "#910504";
+                        errorPairFloyd.style.visibility = "visible";
+                    }else{
+                        addEdgePair( v1, v2, peso );
+                        errorPairFloyd.innerText = "Has been added successfully";
+                        errorPairFloyd.style.visibility = "visible";
+                        errorPairFloyd.style.color = "green";
                     }
-                    if (!graph.existVertex(v2)) {
-                        smsErrrPair.innerText = "The second vertex isn't found";
-                        smsErrrPair.style.color = "#910504";
-                        smsErrrPair.style.visibility = "visible";
+                }else{
+                    if (!graph.existVertex(v1) && !graph.existVertex(v2)) {
+                        errorPairFloyd.innerText = "The vertexes isn't found";
+                        errorPairFloyd.style.visibility = "visible";
+                        errorPairFloyd.style.color = "#910504";
+                    }else{
+                        if (!graph.existVertex(v1)) {
+                            errorPairFloyd.innerText = "The first vertex isn't found";
+                            errorPairFloyd.style.visibility = "visible";
+                            errorPairFloyd.style.color = "#910504";
+                        }
+                        if (!graph.existVertex(v2)) {
+                            errorPairFloyd.innerText = "The second vertex isn't found";
+                            errorPairFloyd.style.color = "#910504";
+                            errorPairFloyd.style.visibility = "visible";
+                        }
                     }
                 }
             }
+            else{
+                errorPairFloyd.innerText = "The third element isn't a number";
+                errorPairFloyd.style.color = "#910504";
+                errorPairFloyd.style.visibility = "visible";
+            }
         }else{
-            smsErrrPair.innerText = "Only two numbers please";
-            smsErrrPair.style.visibility = "visible";
+            errorPairFloyd.innerText = "Only three numbers please";
+            errorPairFloyd.style.visibility = "visible";
         }
-        inpPairV.value = "";
+       inpPairFloyd.value = "";
     }
 }
 
@@ -123,81 +207,123 @@ function showListsFloyd() {
     closeSmsErrorFloyd();
     pListV = document.getElementById("listVFloyd");
     listEdges = document.getElementById("listEdgeFloyd");
-    tittle = document.getElementById("tittleLEdgesFloyd");
+    tittleFloyd = document.getElementById("tittleLEdgesFloyd");
 
-    tittle.style.display = "none";
+    tittleFloyd.style.display = "none";
 
 
     if( graph.numberVertex() === 0 ){
-        pListV.innerText = "Don't exist any vertex";
+        pListV.innerHTML = "Don't exist any vertex";
+        pListV.style.display = "block";
+
 
     }else{
         pListV.innerHTML = "<h3 style='display: inline'>List of vertexes: </h3>" + graph.arrVertex;
+        pListV.style.display = "block";
     }
 
     if( graph.numberEdge() === 0 ){
         listEdges.innerText = "Don't exist any edge";
+        listEdges.style.display = "block";
     }else{
-        tittle.style.display = "block";
+        tittleFloyd.style.display = "block";
 
-        listEdges.style.columnCount = "3";
+        listEdges.style.columnCount = "2";
         listEdges.style.width = "60%";
         listEdges.innerText = "";
-        var listOldEdges = document.getElementById("ulLisEdges");
+        var listOldEdges = document.getElementById("ulLisEdgesFloyd");
         if( listOldEdges != null ){
             listOldEdges.remove();
         }
         for( var i = 0; i < graph.numberVertex(); i++ ){
             var listEdge = document.createElement('li');
-            listEdge.innerText = graph.arrEdge[i];
+            var valor = 0;
+            for( var j = 0; j < graph.arrEdge[i].length; j++ ){
+                listEdge.innerText += " node: " + graph.arrEdge[i][j].node + " peso: " + graph.arrEdge[i][j].peso ;
+            }
             listEdges.appendChild(listEdge);
         }
+        listEdges.style.display = "block";
     }
 }
 
 function FloydHTMLFloyd() {
+    debugger
     closeSmsErrorFloyd();
-    pBFS = document.getElementById("listFloyd");
+    answerFloyd = document.getElementById("listFloyd");
 
+    if( graph.numberVertex() === 0 ){
+        answerFloyd.innerText = "Don't exist any vertex";
+        answerFloyd.style.display = "block";
+        answerFloyd.style.visibility = "visible";
+    }else{
+        if( graph.numberEdge() === 0){
+            answerFloyd.innerText = "Don't exist any edge";
+            answerFloyd.style.visibility = "visible";
+            answerFloyd.style.display = "block";
+        }else{
+
+            for( var i = 0; i < graph.arrVertex.length; i ++ ){
+                for( var j = 0; j < graph.arrVertex.length; j ++ ){
+                    if( isNaN(matrix[i][j]) ){
+                        matrix[i][j] = 0;
+                    }
+                    if( matrix[i][j] === undefined){
+                        matrix[i][j] = 0;
+                    }
+                }
+            }
+            answerFloyd.innerHTML = "<h3 style='display: inline'>Floyd Matrix: </h3>" + floyd() ;
+            answerFloyd.style.visibility = "visible";
+            answerFloyd.style.display = "block";
+        }
+    }
 }
 
 function closeAllFloyd() {
     debugger
-    if( typeof inpListV !== "undefined"){
-        inpListV.value = "";
+    if( typeof inpLVDFS !== "undefined"){
+       inpLVDFS.value = "";
     }
-    if( typeof errorInpListV !== "undefined"){
-        errorInpListV.style.visibility = "hidden";
+    if( typeof errorFloyd !== "undefined"){
+       errorFloyd.style.visibility = "hidden";
     }
 
-    if( typeof inpPairV !== "undefined"){
-        inpPairV.value = "";
+    if( typeof inpPairFloyd !== "undefined"){
+       inpPairFloyd.value = "";
     }
-    if( typeof smsErrrPair !== "undefined"){
-        smsErrrPair.style.visibility = "hidden";
+    if( typeof errorPairFloyd !== "undefined"){
+        errorPairFloyd.style.visibility = "hidden";
     }
-    if( typeof inputNo !== "undefined"){
-        inputNo.value = "";
-    }
-    if( typeof errorNo !== "undefined"){
-        errorNo.style.visibility = "hidden";
+
+    if( typeof  answerFloyd !== "undefined"){
+        answerFloyd.style.display = "none";
     }
 
     graph.arrVertex.length = 0;
     graph.arrEdge.length = 0;
-    pListV.innerText = "";
+    pListV.innerHTML = "";
     listEdges.innerText = "";
-    tittle.style.display = "none";
+    tittleFloyd.style.display = "none";
 }
 
 function closeSmsErrorFloyd() {
-    if( typeof errorInpListV !== "undefined"){
-        errorInpListV.style.visibility = "hidden";
+    if( typeof errorFloyd !== "undefined"){
+       errorFloyd.style.visibility = "hidden";
     }
-    if( typeof smsErrrPair !== "undefined"){
-        smsErrrPair.style.visibility = "hidden";
+    if( typeof errorPairFloyd !== "undefined"){
+        errorPairFloyd.style.visibility = "hidden";
     }
-    if( typeof errorNo !== "undefined"){
-        errorNo.style.visibility = "hidden";
+    if( typeof pListV !== "undefined"){
+        pListV.style.display = "none";
+    }
+    if( typeof listEdges !== "undefined"){
+        listEdges.style.display = "none";
+    }
+    if( typeof tittleFloyd !== "undefined"){
+        tittleFloyd.style.display = "none";
+    }
+    if( typeof  answerFloyd !== "undefined"){
+        answerFloyd.style.display = "none";
     }
 }

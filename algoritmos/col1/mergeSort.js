@@ -85,7 +85,7 @@ function showMergeSort() {
     }
 }
 
-function closeAll() {
+function closeAllMerge() {
     if (typeof inputList !== "undefined") {
         inputList.value = "";
     }

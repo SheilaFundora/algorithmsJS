@@ -1,13 +1,13 @@
 myCriba =  criba(9999999);
 
-function sumDivisors(numero) {
-  var sum = 0;
+function cantDivisors(numero) {
+  var cant = 0;
   var indice = 0;
   var primo = myCriba[indice];
 
   while( primo * primo <= numero ){
     while( numero % primo === 0 ){
-      sum += primo;
+      cant += 1;
       numero = numero / primo  ;
     }
     indice += 1;
@@ -15,8 +15,9 @@ function sumDivisors(numero) {
   }
 
   if (numero > 1) {
-    sum += numero;
+    cant += 1;
   }
 
-  return sum;
+  return cant;
 }
+

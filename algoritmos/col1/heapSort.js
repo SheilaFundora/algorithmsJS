@@ -1,4 +1,3 @@
-
 function heapSort(arr) {
     var size = arr.length;
     build(size, arr);
@@ -85,7 +84,8 @@ function showHeapSort() {
     }
 }
 
-function closeAll() {
+function closeAllHeapSort() {
+    debugger
     if (typeof inputList !== "undefined") {
         inputList.value = "";
     }

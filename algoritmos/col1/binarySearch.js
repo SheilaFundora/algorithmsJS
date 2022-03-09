@@ -119,7 +119,7 @@ function showBinarySearch() {
     }
 }
 
-function closeAll() {
+function closeAllBB() {
     if (typeof inputList !== "undefined") {
         inputList.value = "";
     }
